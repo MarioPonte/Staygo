@@ -10,6 +10,7 @@ import { Nunito } from 'next/font/google';
 import ToasterProvider from './providers/ToasterProvider';
 import getCurrentUser from './actions/getCurrentUser';
 import SearchModal from './components/modals/SearchModal';
+import Footer from './components/footer/Footer';
 
 export const metadata = {
   title: 'staygo',
@@ -40,6 +41,9 @@ export default async function RootLayout({
         <div className='pb-20 pt-28'>
           {children}
         </div>
+        <ClientOnly>
+          <Footer />
+        </ClientOnly>
       </body>
     </html>
   )
