@@ -26,9 +26,10 @@ const UserMenu: React.FC<UserMenuProps> = ({
     }, []);
 
     const refOne = useRef<HTMLDivElement>(null);
+    const refTwo = useRef<HTMLDivElement>(null);
 
     const handleClickOutside = (e: any) => {
-        if(!refOne?.current?.contains(e.target)){
+        if(!refOne?.current?.contains(e.target) && !refTwo?.current?.contains(e.target)){
             setIsOpen(false);
         }
     }
@@ -66,7 +67,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
             </div>
 
             {isOpen && (
-                <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
+                <div ref={refTwo} className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
                     <div className="flex flex-col cursor-pointer">
                         {currentUser ? (
                             <>
