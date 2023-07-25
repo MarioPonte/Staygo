@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+    <h1 style="border-bottom: none;">Staygo</h1>
+    <h3>Software for shared accommodation in homes</h3>
+    <h1><a href="https://staygo.vercel.app/"><p>See the site</p></a></h1>
+</div>
 
 ## Getting Started
 
