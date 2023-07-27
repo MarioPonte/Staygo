@@ -35,6 +35,8 @@ const Search = () => {
                 diff = 1;
             }
 
+            if(diff === 1) return `${diff} Day`;
+
             return `${diff} Days`;
         }
 
@@ -43,6 +45,7 @@ const Search = () => {
 
     const guestLabel = useMemo(() => {
         if(guestCount){
+            if(guestCount === "1") return `${guestCount} Guest`;
             return `${guestCount} Guests`;
         }
 
