@@ -1,4 +1,5 @@
 <div align="center">
+    <img src="public/images/appLogo.svg" alt="Staygo Logo">
     <h1 style="border-bottom: none;">Staygo</h1>
     <h3>Software for shared accommodation in homes</h3>
     <h1><a href="https://staygo.vercel.app/"><p>See the site</p></a></h1>

@@ -14,7 +14,7 @@ import Footer from './components/footer/Footer';
 
 export const metadata = {
   title: 'staygo',
-  description: 'Airbnb clone',
+  description: 'Shared accommodation in homes.',
 }
 
 const font = Nunito({
