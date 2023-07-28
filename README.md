@@ -5,6 +5,11 @@
     <h1><a href="https://staygo.vercel.app/"><p>See the site</p></a></h1>
 </div>
 
+## State of the project
+
+
+At the moment the project is in a stable development phase, with all functionalities added so far functional. The system may still contain some bugs, if they are found, please report them so that they can be resolved.
+
 ## Getting Started
 
 First, run the development server:

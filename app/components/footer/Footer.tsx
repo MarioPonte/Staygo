@@ -10,7 +10,7 @@ const Footer = () => {
     return (
         <div className="bg-white border-t-[1px] sticky top-[100vh]">
             <Container>
-                <div className="flex flex-auto items-center text-sm">
+                <div className="flex flex-auto items-center text-xs">
                     <Link target="_blank" href="https://marioponte.github.io/Portfolio/"><LogoMario className="h-16"/></Link>
                     © All Rights Reserved to Mário Ponte - {moment().year()}
                 </div>
