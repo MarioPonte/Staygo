@@ -3,10 +3,11 @@
 import useCountries from "@/app/hooks/useCountries";
 import { SafeUser } from "@/app/types";
 import { IconType } from "react-icons";
+import { BsFacebook, BsWhatsapp } from "react-icons/bs";
 import Avatar from "../Avatar";
 import ListingCategory from "./ListingCategory";
 import dynamic from "next/dynamic";
-import { FacebookShareButton } from "react-share";
+import { FacebookShareButton, WhatsappShareButton } from "react-share";
 
 const Map = dynamic(() => import('../Map'), {
     ssr: false
@@ -42,7 +43,7 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
     return (
         <div className="col-span-4 flex flex-col gap-8">
             <div className="flex flex-col gap-2">
-                <div 
+                <div
                     className="
                         text-xl
                         font-semibold
@@ -89,7 +90,23 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
                 {description}
             </div>
             <hr />
-            <FacebookShareButton url={window.location.href}>Partilhar</FacebookShareButton>
+            <div
+                className="
+                        flex
+                        flex-row
+                        items-center
+                        gap-4
+                        font-light
+                        text-neutral-500
+                    "
+            >
+                <div>
+                    <FacebookShareButton url={window.location.href}><BsFacebook size={20} /></FacebookShareButton>
+                </div>
+                <div>
+                    <WhatsappShareButton url={window.location.href}><BsWhatsapp size={20} /></WhatsappShareButton>
+                </div>
+            </div>
             <hr />
             <Map center={coordinates} />
 

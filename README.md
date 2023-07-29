@@ -10,7 +10,13 @@
 
 At the moment the project is in a stable development phase, with all functionalities added so far functional. The system may still contain some bugs, if they are found, please report them so that they can be resolved.
 
-## Getting Started
+## Steps to install project in local environment
+
+### Node.js
+The first step is install [Node.js](https://nodejs.org) in your machine. 
+Download the LTS version, this is the recommended version for most users.
+
+### Getting Started
 
 First, run the development server:
 
