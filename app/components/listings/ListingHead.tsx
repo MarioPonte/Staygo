@@ -6,6 +6,7 @@ import useCountries from "@/app/hooks/useCountries";
 import { SafeUser } from "@/app/types";
 import Heading from "../Heading";
 import HeartButton from "../HeartButton";
+import ShareButton from "../ShareButton";
 
 interface ListingHeadProps {
     title: string;
@@ -52,6 +53,9 @@ const ListingHead: React.FC<ListingHeadProps> = ({
                         listingId={id}
                         currentUser={currentUser}
                     />
+                </div>
+                <div className="absolute top-14 right-5">
+                    <ShareButton />
                 </div>
             </div>
         </>
