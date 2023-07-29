@@ -6,6 +6,7 @@ import { IconType } from "react-icons";
 import Avatar from "../Avatar";
 import ListingCategory from "./ListingCategory";
 import dynamic from "next/dynamic";
+import { FacebookShareButton } from "react-share";
 
 const Map = dynamic(() => import('../Map'), {
     ssr: false
@@ -87,6 +88,8 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
             <div className="text-lg font-light text-neutral-500">
                 {description}
             </div>
+            <hr />
+            <FacebookShareButton url={window.location.href}>Partilhar</FacebookShareButton>
             <hr />
             <Map center={coordinates} />
 
