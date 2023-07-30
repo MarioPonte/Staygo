@@ -1,11 +1,14 @@
 'use client';
 
-import { BsShareFill, BsShare } from "react-icons/bs";
+import { BiSolidShare, BiShare } from "react-icons/bi";
+import ShareModal from "./modals/ShareModal";
+import useShareModal from "../hooks/useShareModal";
 
 const ShareButton = () => {
+    const shareModal = useShareModal();
     return (
         <div
-            onClick={() => alert("Teste URL: " + window.location.href)}
+            onClick={shareModal.onOpen}
             className="
                 relative
                 hover:opacity-80
@@ -13,7 +16,7 @@ const ShareButton = () => {
                 cursor-pointer
             "
         >
-            <BsShare
+            <BiShare
                 size={24}
                 className="
                     fill-white
@@ -22,7 +25,7 @@ const ShareButton = () => {
                     -right-[2px]
                 "
             />
-            <BsShareFill
+            <BiSolidShare
                 size={20}
                 className='fill-neutral-500/70'
             />

@@ -11,7 +11,7 @@ import {
     GiCaveEntrance, 
     GiForestCamp, 
     GiIsland,
-    GiWindmill
+    GiSailboat
   } from 'react-icons/gi';
 import { MdOutlineVilla } from "react-icons/md";
 import { FaSkiing } from "react-icons/fa";
@@ -27,9 +27,9 @@ export const categories = [
         description: "This property is close to the beach!"
     },
     {
-        label: "Windmills",
-        icon: GiWindmill,
-        description: "This property has windmills!"
+        label: "Boats",
+        icon: GiSailboat,
+        description: "This property is a boat!"
     },
     {
         label: "Modern",

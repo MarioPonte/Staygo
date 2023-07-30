@@ -90,24 +90,6 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
                 {description}
             </div>
             <hr />
-            <div
-                className="
-                        flex
-                        flex-row
-                        items-center
-                        gap-4
-                        font-light
-                        text-neutral-500
-                    "
-            >
-                <div>
-                    <FacebookShareButton url={window.location.href}><BsFacebook size={20} /></FacebookShareButton>
-                </div>
-                <div>
-                    <WhatsappShareButton url={window.location.href}><BsWhatsapp size={20} /></WhatsappShareButton>
-                </div>
-            </div>
-            <hr />
             <Map center={coordinates} />
 
         </div>

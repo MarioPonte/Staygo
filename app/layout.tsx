@@ -11,6 +11,7 @@ import ToasterProvider from './providers/ToasterProvider';
 import getCurrentUser from './actions/getCurrentUser';
 import SearchModal from './components/modals/SearchModal';
 import Footer from './components/footer/Footer';
+import ShareModal from './components/modals/ShareModal';
 
 export const metadata = {
   title: 'staygo',
@@ -34,6 +35,7 @@ export default async function RootLayout({
           <ToasterProvider/>
           <SearchModal/>
           <RentModal/>
+          <ShareModal/>
           <LoginModal/>
           <RegisterModal/>
           <Navbar currentUser={currentUser} />

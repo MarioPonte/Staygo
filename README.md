@@ -12,20 +12,20 @@ At the moment the project is in a stable development phase, with all functionali
 
 ## Steps to install project in local environment
 
+### Git
+Install [Git](https://git-scm.com/) in your machine. 
+Download the Latest source Release.
+
 ### Node.js
-The first step is install [Node.js](https://nodejs.org) in your machine. 
+Install [Node.js](https://nodejs.org) in your machine. 
 Download the LTS version, this is the recommended version for most users.
 
-### Getting Started
+### Running the project in local environment
 
-First, run the development server:
+First, make a clone of the project repository to your machine.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+git clone https://github.com/MarioPonte/Staygo.git
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
