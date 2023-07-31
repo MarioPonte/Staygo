@@ -2,7 +2,7 @@
 
 import { ThemeProvider } from 'next-themes';
 
-const ThemesProvider = ({children}) => {
+const ThemesProvider = ({children}: any) => {
     return (
         <ThemeProvider attribute='class'>{children}</ThemeProvider>
     )
