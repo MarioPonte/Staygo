@@ -28,6 +28,26 @@ First, make a clone of the project repository to your machine.
 git clone https://github.com/MarioPonte/Staygo.git
 ```
 
+Install all project dependencies.
+
+```bash
+npm i
+```
+
+Create a ``.env`` file and put your special credentials.
+```bash
+DATABASE_URL=""
+NEXTAUTH_SECRET=""
+
+GITHUB_ID=
+GITHUB_SECRET=
+
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=""
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.

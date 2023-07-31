@@ -2,6 +2,7 @@
 
 import { useTheme } from "next-themes";
 import React, { useEffect, useState } from "react";
+import { BsFillMoonFill, BsSunFill } from "react-icons/bs";
 
 const ToggleTheme = () => {
     const {resolvedTheme, setTheme} = useTheme();
@@ -15,8 +16,8 @@ const ToggleTheme = () => {
     }
 
     return (
-        <button onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')} className="text-black dark:text-red-500">
-            {resolvedTheme === 'dark' ? 'light' : 'dark'}
+        <button onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')} className="text-black dark:text-white">
+            {resolvedTheme === 'dark' ? ( <BsSunFill size={20} /> ) : ( <BsFillMoonFill size={20} /> )}
         </button>
     )
 }
