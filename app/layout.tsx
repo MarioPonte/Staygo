@@ -8,6 +8,7 @@ import Navbar from './components/navbar/Navbar';
 import './globals.css';
 import { Nunito } from 'next/font/google';
 import ToasterProvider from './providers/ToasterProvider';
+import ThemesProvider from './providers/ThemesProvider';
 import getCurrentUser from './actions/getCurrentUser';
 import SearchModal from './components/modals/SearchModal';
 import Footer from './components/footer/Footer';
@@ -29,23 +30,25 @@ export default async function RootLayout({
 }) {
   const currentUser = await getCurrentUser();
   return (
-    <html lang="en">
+    <html lang="en" className='light' style={{ colorScheme: 'light' }}>
       <body className={font.className}>
-        <ClientOnly>
-          <ToasterProvider/>
-          <SearchModal/>
-          <RentModal/>
-          <ShareModal/>
-          <LoginModal/>
-          <RegisterModal/>
-          <Navbar currentUser={currentUser} />
-        </ClientOnly>
-        <div className='pb-20 pt-28'>
-          {children}
-        </div>
-        <ClientOnly>
-          <Footer />
-        </ClientOnly>
+        <ThemesProvider>
+          <ClientOnly>
+            <ToasterProvider/>
+            <SearchModal/>
+            <RentModal/>
+            <ShareModal/>
+            <LoginModal/>
+            <RegisterModal/>
+            <Navbar currentUser={currentUser} />
+          </ClientOnly>
+          <div className='pb-20 pt-28'>
+            {children}
+          </div>
+          <ClientOnly>
+            <Footer />
+          </ClientOnly>
+        </ThemesProvider>
       </body>
     </html>
   )
