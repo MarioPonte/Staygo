@@ -53,8 +53,11 @@ const Input: React.FC<InputProps> = ({
                     p-4
                     pt-6 
                     font-light 
-                    bg-white 
+                    bg-white
+                    dark:bg-zinc-900
                     border-2
+                    dark:border-zinc-400
+                    dark:text-zinc-400
                     rounded-md
                     outline-none
                     transition
