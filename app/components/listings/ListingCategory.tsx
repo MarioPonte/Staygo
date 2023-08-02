@@ -16,12 +16,12 @@ const ListingCategory: React.FC<ListingCategoryProps> = ({
     return (
         <div className="flex flex-col gap-6">
             <div className="flex flex-row items-center gap-4">
-                <Icon size={40} className="text-neutral-600" />
+                <Icon size={40} className="text-neutral-600 dark:text-zinc-300" />
                 <div className="flex flex-col">
                     <div className="text-lg font-semibold">
                         {label}
                     </div>
-                    <div className="text-neutral-500 font-light">
+                    <div className="text-neutral-500 dark:text-zinc-200 font-light">
                         {description}
                     </div>
                 </div>
