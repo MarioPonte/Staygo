@@ -1,8 +1,6 @@
 'use client';
 
-import { signIn } from "next-auth/react";
-import axios from "axios";
-import { LuCopy } from "react-icons/lu";
+import { LuCopy, LuMail } from "react-icons/lu";
 import { BsWhatsapp, BsFacebook } from "react-icons/bs";
 import { useCallback, useState} from "react";
 import {
@@ -11,21 +9,15 @@ import {
     useForm
 } from "react-hook-form";
 
-import useRegisterModal from "@/app/hooks/useRegisterModal";
-import Modal from "./Modal";
 import Heading from "../Heading";
-import Input from "../inputs/Input";
 import { toast } from "react-hot-toast";
 import Button from "../Button";
-import { useRouter } from "next/navigation";
 import useShareModal from "@/app/hooks/useShareModal";
 import NormalModal from "./NormalModal";
 
-import { FacebookShareButton, WhatsappShareButton } from "react-share";
+import { FacebookShareButton, WhatsappShareButton, EmailShareButton } from "react-share";
 
 const ShareModal = () => {
-    const router = useRouter();
-    const registerModal = useRegisterModal();
     const ShareModal = useShareModal();
     const [isLoading, setIsLoading] = useState(false);
 
@@ -41,11 +33,6 @@ const ShareModal = () => {
             password: ""
         }
     });
-
-    const toggle = useCallback(() => {
-        ShareModal.onClose();
-        registerModal.onOpen();
-    }, [ShareModal, registerModal]);
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
@@ -69,6 +56,14 @@ const ShareModal = () => {
                     onClick={() => {}}
                 />
             </WhatsappShareButton>
+            <EmailShareButton url={window.location.href}>
+                <Button
+                    outline
+                    label="Email"
+                    icon={LuMail}
+                    onClick={() => {}}
+                />
+            </EmailShareButton>
             <Button
                     outline
                     label="Copy Link"

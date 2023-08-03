@@ -67,3 +67,12 @@ Here are listed all the technologies that were used for the development of the p
 - ``React.js``
 - ``Next.js``
 - ``Tailwind CSS``
+- ``MongoDB``
+
+## Project functionalities
+
+Here are listed all the functionalities of the project.
+
+- `Light and Dark Mode`: Staygo supports Light and Dark modes to provide a nice and personal visual experience to our users.
+
+

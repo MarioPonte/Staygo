@@ -28,7 +28,7 @@ const CategoryInput: React.FC<CategoryInputProps> = ({
                 hover:border-black
                 transition
                 cursor-pointer
-                ${selected ? 'border-black' : 'border-neutral-200'}
+                ${selected ? 'border-black dark:border-neutral-200' : 'border-neutral-200 dark:border-zinc-800'}
             `}
         >
             <Icon size={30} />

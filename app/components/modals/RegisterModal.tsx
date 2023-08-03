@@ -116,7 +116,7 @@ const RegisterModal = () => {
                 mt-4
                 font-light
             ">
-                <div className="justify-center flex flex-row items-center gap-2">
+                <div className="justify-center flex flex-row items-center gap-2 dark:text-zinc-200">
                     <div>
                         Already have an account?
                     </div>
@@ -124,10 +124,11 @@ const RegisterModal = () => {
                         onClick={toggle}
                         className="
                             text-neutral-800
+                            dark:text-zinc-100
                             cursor-pointer
                             hover:underline
                     ">
-                        Log in
+                        Login
                     </div>
                 </div>
             </div>
