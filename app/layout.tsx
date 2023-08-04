@@ -17,6 +17,8 @@ import ShareModal from './components/modals/ShareModal';
 export const metadata = {
   title: 'staygo',
   description: 'Shared accommodation platform.',
+  manifest: '/manifest.json',
+  themeColor: '#fff',
 }
 
 const font = Nunito({
