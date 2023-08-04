@@ -73,6 +73,7 @@ Here are listed all the technologies that were used for the development of the p
 
 Here are listed all the functionalities of the project.
 
+- `Progressive Web App (PWA)`: Our application has been developed as a PWA, which means that it offers an optimized user experience, with the advantage of being accessible directly through the web browser, without the need for installation through an app store.
 - `Light and Dark Mode`: Staygo supports Light and Dark modes to provide a nice and personal visual experience to our users.
 
 
