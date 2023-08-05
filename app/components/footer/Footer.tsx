@@ -1,6 +1,5 @@
 'use client';
 
-import Image from "next/image";
 import Container from "../Container";
 import { LogoMario } from "@/app/icons";
 import moment from 'moment';
