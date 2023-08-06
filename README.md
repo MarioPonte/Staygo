@@ -75,5 +75,10 @@ Here are listed all the functionalities of the project.
 
 - `Progressive Web App (PWA)`: Our application has been developed as a PWA, which means that it offers an optimized user experience, with the advantage of being accessible directly through the web browser, without the need for installation through an app store.
 - `Light and Dark Mode`: Staygo supports Light and Dark modes to provide a nice and personal visual experience to our users.
+- `Register and login`: You can register a user account on our platform, by registering an account you will be able to:
+    - Rent a property and view your properties
+    - Favorite a property and view your favorites
+    - Book a property and view your books
+- `Share properties`: If you like a property you can help more people get to know it by sharing it on social media from the share icon that appears on each property page.
 
 

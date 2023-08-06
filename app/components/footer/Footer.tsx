@@ -14,14 +14,19 @@ const Footer = () => {
                 <div className="flex flex-auto items-center text-xs justify-between">
                     <Link target="_blank" href="https://marioponte.github.io/Portfolio/"><LogoMario className="h-14 fill-black dark:fill-white"/></Link>
                     © All Rights Reserved to Mário Ponte - {moment().year()}
-                    <div className="flex">
+                    <div className="flex space-x-2">
                         <ToggleTheme />
-                        <button onClick={() => {
-                            window.scrollTo({
-                                top: 0,
-                                behavior: "smooth"
-                            })
-                        }}><FiArrowUp size={20} /></button>
+                        <button
+                            className="rounded-full hover:bg-neutral-100 dark:hover:bg-zinc-950 transition p-2"
+                            onClick={() => {
+                                window.scrollTo({
+                                    top: 0,
+                                    behavior: "smooth"
+                                })
+                            }}
+                        >
+                            <FiArrowUp size={20} />
+                        </button>
                     </div>
                 </div>
             </Container>

@@ -16,7 +16,7 @@ const ToggleTheme = () => {
     }
 
     return (
-        <button onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')} className="text-black dark:text-white">
+        <button onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')} className="text-black dark:text-white rounded-full hover:bg-neutral-100 dark:hover:bg-zinc-950 transition p-2">
             {resolvedTheme === 'dark' ? ( <BsSunFill size={20} /> ) : ( <BsFillMoonFill size={20} /> )}
         </button>
     )
