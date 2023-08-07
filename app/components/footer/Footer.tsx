@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="bg-white dark:bg-zinc-900 border-t-[1px] dark:border-zinc-600 sticky top-[100vh]">
             <Container>
                 <div className="flex flex-auto items-center text-xs justify-between">
-                    <Link target="_blank" href="https://marioponte.github.io/Portfolio/"><LogoMario className="h-14 fill-black dark:fill-white"/></Link>
+                    <Link aria-label="Mário Ponte Website" target="_blank" href="https://marioponte.github.io/Portfolio/"><LogoMario className="h-14 fill-black dark:fill-white"/></Link>
                     © All Rights Reserved to Mário Ponte - {moment().year()}
                     <div className="flex space-x-2">
                         <ToggleTheme />
