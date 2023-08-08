@@ -17,6 +17,7 @@ const Footer = () => {
                     <div className="flex space-x-2">
                         <ToggleTheme />
                         <button
+                            aria-label="Scroll to top"
                             className="rounded-full hover:bg-neutral-100 dark:hover:bg-zinc-950 transition p-2"
                             onClick={() => {
                                 window.scrollTo({

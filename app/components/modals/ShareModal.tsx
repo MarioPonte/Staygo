@@ -3,11 +3,6 @@
 import { LuCopy, LuMail } from "react-icons/lu";
 import { BsWhatsapp, BsFacebook } from "react-icons/bs";
 import { useCallback, useState} from "react";
-import {
-    FieldValues,
-    SubmitHandler,
-    useForm
-} from "react-hook-form";
 
 import Heading from "../Heading";
 import { toast } from "react-hot-toast";
@@ -20,19 +15,6 @@ import { FacebookShareButton, WhatsappShareButton, EmailShareButton } from "reac
 const ShareModal = () => {
     const ShareModal = useShareModal();
     const [isLoading, setIsLoading] = useState(false);
-
-    const {
-        register,
-        handleSubmit,
-        formState: {
-            errors,
-        }
-    } = useForm<FieldValues>({
-        defaultValues: {
-            email: "",
-            password: ""
-        }
-    });
 
     const bodyContent = (
         <div className="flex flex-col gap-4">

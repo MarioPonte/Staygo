@@ -3,11 +3,9 @@
 import useCountries from "@/app/hooks/useCountries";
 import { SafeUser } from "@/app/types";
 import { IconType } from "react-icons";
-import { BsFacebook, BsWhatsapp } from "react-icons/bs";
 import Avatar from "../Avatar";
 import ListingCategory from "./ListingCategory";
 import dynamic from "next/dynamic";
-import { FacebookShareButton, WhatsappShareButton } from "react-share";
 
 const Map = dynamic(() => import('../Map'), {
     ssr: false
