@@ -22,6 +22,14 @@ const ShareModal = () => {
                 title="Share this place"
                 subtitle="You can share this place with your friends!"
             />
+
+            <FacebookShareButton url={window.location.href}>
+                <div className="flex text-blue-600 text-lg relative rounded-lg hover:opacity-80 transition w-full border-[1px] border-blue-600">
+                    <BsFacebook size={30} /> Facebook
+                </div>
+            </FacebookShareButton>
+
+            {/*
             <FacebookShareButton url={window.location.href}>
                 <Button
                     outline
@@ -46,6 +54,8 @@ const ShareModal = () => {
                     onClick={() => {}}
                 />
             </EmailShareButton>
+            */}
+
             <Button
                     outline
                     label="Copy Link"
