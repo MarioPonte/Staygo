@@ -24,48 +24,38 @@ const ShareModal = () => {
             />
 
             <FacebookShareButton url={window.location.href}>
-                <div className="flex text-blue-600 text-lg relative rounded-lg hover:opacity-80 transition w-full border-[1px] border-blue-600">
-                    <BsFacebook size={30} /> Facebook
+                <div className="py-3 border-2 relative flex text-blue-600 text-md rounded-lg hover:opacity-80 transition w-full border-blue-600 justify-center font-semibold">
+                    <div className="mr-2"><BsFacebook size={24} /></div>
+                    <div>Facebook</div>
                 </div>
             </FacebookShareButton>
 
-            {/*
-            <FacebookShareButton url={window.location.href}>
-                <Button
-                    outline
-                    label="Facebook"
-                    icon={BsFacebook}
-                    onClick={() => {}}
-                />
-            </FacebookShareButton>
             <WhatsappShareButton url={window.location.href}>
-                <Button
-                    outline
-                    label="Whatsapp"
-                    icon={BsWhatsapp}
-                    onClick={() => {}}
-                />
+                <div className="py-3 border-2 relative flex text-green-700 text-md rounded-lg hover:opacity-80 transition w-full border-green-700 justify-center font-semibold">
+                    <div className="mr-2"><BsWhatsapp size={24} /></div>
+                    <div>Whatsapp</div>
+                </div>
             </WhatsappShareButton>
-            <EmailShareButton url={window.location.href}>
-                <Button
-                    outline
-                    label="Email"
-                    icon={LuMail}
-                    onClick={() => {}}
-                />
-            </EmailShareButton>
-            */}
 
-            <Button
-                    outline
-                    label="Copy Link"
-                    icon={LuCopy}
-                    onClick={() => {
-                        navigator.clipboard.writeText(window.location.href).then(() => {
-                            toast.success("Link copied successfully!");
-                        })
-                    }}
-            />
+            <EmailShareButton url={window.location.href}>
+                <div className="py-3 border-2 relative flex text-black dark:text-white text-md rounded-lg hover:opacity-80 transition w-full border-black dark:border-zinc-600 justify-center font-semibold">
+                    <div className="mr-2"><LuMail size={24} /></div>
+                    <div>Email</div>
+                </div>
+            </EmailShareButton>
+
+            <button 
+                onClick={() => {
+                    navigator.clipboard.writeText(window.location.href).then(() => {
+                        toast.success("Link copied successfully!");
+                    })
+                }}
+            >
+                <div className="py-3 border-2 relative flex text-black dark:text-white text-md rounded-lg hover:opacity-80 transition w-full border-black dark:border-zinc-600 justify-center font-semibold">
+                    <div className="mr-2"><LuCopy size={24} /></div>
+                    <div>Copy Link</div>
+                </div>
+            </button>
         </div>
     );
 
