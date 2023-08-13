@@ -2,11 +2,9 @@
 
 import { LuCopy, LuMail } from "react-icons/lu";
 import { BsWhatsapp, BsFacebook } from "react-icons/bs";
-import { useCallback, useState} from "react";
 
 import Heading from "../Heading";
 import { toast } from "react-hot-toast";
-import Button from "../Button";
 import useShareModal from "@/app/hooks/useShareModal";
 import NormalModal from "./NormalModal";
 
@@ -14,7 +12,6 @@ import { FacebookShareButton, WhatsappShareButton, EmailShareButton } from "reac
 
 const ShareModal = () => {
     const ShareModal = useShareModal();
-    const [isLoading, setIsLoading] = useState(false);
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
@@ -61,7 +58,6 @@ const ShareModal = () => {
 
     return (
         <NormalModal
-            disabled={isLoading}
             isOpen={ShareModal.isOpen}
             title="Share"
             onClose={ShareModal.onClose}
