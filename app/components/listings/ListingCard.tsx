@@ -85,8 +85,6 @@ const ListingCard: React.FC<ListingCardProps> = ({
                         fill
                         alt="Listing"
                         src={data.imageSrc}
-                        placeholder="blur"
-                        blurDataURL={data.imageSrc}
                         className="
                             object-cover
                             h-full
