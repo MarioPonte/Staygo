@@ -30,18 +30,13 @@ const useFavorite = ({
     ) => {
         e.stopPropagation();
 
-        if(!currentUser){
-            return loginModal.onOpen();
-        }
+        if(!currentUser) return loginModal.onOpen();
 
         try{
             let request;
 
-            if(hasFavorited){
-                request = () => axios.delete(`/api/favorites/${listingId}`)
-            }else{
-                request = () => axios.post(`/api/favorites/${listingId}`)
-            }
+            if(hasFavorited) request = () => axios.delete(`/api/favorites/${listingId}`);
+            else request = () => axios.post(`/api/favorites/${listingId}`);
 
             await request();
             router.refresh();

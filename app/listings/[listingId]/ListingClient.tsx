@@ -63,9 +63,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
   const [dateRange, setDateRange] = useState<Range>(initialDateRange);
 
   const onCreateReservation = useCallback(() => {
-      if (!currentUser) {
-        return loginModal.onOpen();
-      }
+      if (!currentUser) return loginModal.onOpen();
       setIsLoading(true);
 
       axios.post('/api/reservations', {
@@ -102,11 +100,8 @@ const ListingClient: React.FC<ListingClientProps> = ({
         dateRange.startDate
       );
       
-      if (dayCount && listing.price) {
-        setTotalPrice(dayCount * listing.price);
-      } else {
-        setTotalPrice(listing.price);
-      }
+      if (dayCount && listing.price) setTotalPrice(dayCount * listing.price);
+      else setTotalPrice(listing.price);
     }
   }, [dateRange, listing.price]);
 
