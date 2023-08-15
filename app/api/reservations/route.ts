@@ -8,9 +8,7 @@ export async function POST(
 ){
     const currentUser = await getCurrentUser();
 
-    if(!currentUser){
-        return NextResponse.error();
-    }
+    if(!currentUser) return NextResponse.error();
 
     const body = await request.json();
 
@@ -21,9 +19,7 @@ export async function POST(
         totalPrice
     } = body;
 
-    if(!listingId || !startDate || !endDate || !totalPrice){
-        return NextResponse.error();
-    }
+    if(!listingId || !startDate || !endDate || !totalPrice) return NextResponse.error();
 
     const listingAndReservation = await prisma.listing.update({
         where: {

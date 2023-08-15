@@ -35,25 +35,29 @@ const RegisterModal = () => {
         defaultValues: {
             name: "",
             email: "",
-            password: ""
+            password: "",
+            repeatPassword: ""
         }
     });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        setIsLoading(true);
-
-        axios.post("/api/register", data)
-            .then(() => {
-                toast.success('Success!');
-                registerModal.onClose();
-                loginModal.onOpen();
-            })
-            .catch((error) => {
-                toast.error("Something went wrong.");
-            })
-            .finally(() => {
-                setIsLoading(false);
-            })
+        if(data.password === data.repeatPassword){
+            setIsLoading(true);
+            axios.post("/api/register", data)
+                .then(() => {
+                        toast.success('Success!');
+                        registerModal.onClose();
+                        loginModal.onOpen();
+                })
+                .catch((error) => {
+                    toast.error("Something went wrong.");
+                })
+                .finally(() => {
+                    setIsLoading(false);
+                })
+        }else{
+            toast.error("You have entered different passwords.");
+        }
     }
 
     const toggle = useCallback(() => {
@@ -86,6 +90,15 @@ const RegisterModal = () => {
             <Input
                 id="password"
                 label="Password"
+                type="password"
+                disabled={isLoading}
+                register={register}
+                errors={errors}
+                required
+            />
+            <Input
+                id="repeatPassword"
+                label="Repeat Password"
                 type="password"
                 disabled={isLoading}
                 register={register}

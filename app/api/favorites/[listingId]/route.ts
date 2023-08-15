@@ -13,15 +13,11 @@ export async function POST(
 ) {
   const currentUser = await getCurrentUser();
 
-  if (!currentUser) {
-    return NextResponse.error();
-  }
+  if (!currentUser) return NextResponse.error();
 
   const { listingId } = params;
 
-  if (!listingId || typeof listingId !== 'string') {
-    throw new Error('Invalid ID');
-  }
+  if (!listingId || typeof listingId !== 'string') throw new Error('Invalid ID');
 
   let favoriteIds = [...(currentUser.favoriteIds || [])];
 
@@ -45,15 +41,11 @@ export async function DELETE(
 ){
     const currentUser = await getCurrentUser();
 
-    if (!currentUser) {
-        return NextResponse.error();
-    }
+    if (!currentUser) return NextResponse.error();
 
     const { listingId } = params;
 
-    if (!listingId || typeof listingId !== 'string') {
-        throw new Error('Invalid ID');
-    }
+    if (!listingId || typeof listingId !== 'string') throw new Error('Invalid ID');
 
     let favoriteIds = [...(currentUser.favoriteIds || [])];
 

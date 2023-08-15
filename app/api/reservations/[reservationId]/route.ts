@@ -13,15 +13,11 @@ export async function DELETE(
 ){
     const currentUser = await getCurrentUser();
 
-    if(!currentUser){
-        return NextResponse.error();
-    }
+    if(!currentUser) return NextResponse.error();
 
     const { reservationId } = params;
 
-    if(!reservationId || typeof reservationId !== 'string'){
-        throw new Error('Invalid Id');
-    }
+    if(!reservationId || typeof reservationId !== 'string') throw new Error('Invalid Id');
 
     const reservation = await prisma.reservation.deleteMany({
         where: {

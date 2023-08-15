@@ -8,9 +8,7 @@ export async function POST(
 ){
     const currentUser = await getCurrentUser();
 
-    if(!currentUser){
-        return NextResponse.error();
-    }
+    if(!currentUser) return NextResponse.error();
 
     const body = await request.json();
 
@@ -27,9 +25,7 @@ export async function POST(
     } = body;
 
     Object.keys(body).forEach((value: any) => {
-        if(!body[value]){
-            NextResponse.error();
-        }
+        if(!body[value]) NextResponse.error();
     });
 
     const listing = await prisma.listing.create({
