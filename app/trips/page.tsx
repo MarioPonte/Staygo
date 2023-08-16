@@ -4,10 +4,6 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import getReservations from "@/app/actions/getReservations";
 import TripsClient from "./TripsClient";
 
-interface IParams {
-    listingId?: string;
-}
-
 const TripsPage = async () => {
     const currentUser = await getCurrentUser();
 

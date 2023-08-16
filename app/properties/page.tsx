@@ -4,10 +4,6 @@ import getCurrentUser from "@/app/actions/getCurrentUser";
 import getListings from "../actions/getListings";
 import PropertiesClient from "./PropertiesClient";
 
-interface IParams {
-    listingId?: string;
-}
-
 const PropertiesPage = async () => {
     const currentUser = await getCurrentUser();
 
