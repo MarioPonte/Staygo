@@ -109,6 +109,8 @@ const LoginModal = () => {
                 <button
                     onMouseDown={() => setShowPassword(!showPassword)}
                     onMouseUp={() => setShowPassword(!showPassword)}
+                    onTouchStart={() => setShowPassword(!showPassword)}
+                    onTouchEnd={() => setShowPassword(!showPassword)}
                     className="rounded px-2 py-1 text-zinc-400 cursor-pointer ">{showPassword ? setPasswordIcon("visible") : setPasswordIcon("invisible")}
                 </button>
             </div>
