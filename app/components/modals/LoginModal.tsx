@@ -1,9 +1,9 @@
 'use client';
 
 import { signIn } from "next-auth/react";
-import { AiFillGithub } from "react-icons/ai";
+import { AiFillGithub, AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { useCallback, useState} from "react";
+import { useCallback, useState } from "react";
 import {
     FieldValues,
     SubmitHandler,
@@ -45,27 +45,41 @@ const LoginModal = () => {
             ...data,
             redirect: false,
         })
-        .then((callback) => {
-            setIsLoading(false);
+            .then((callback) => {
+                setIsLoading(false);
 
-            if(callback?.ok){
-                toast.success('Login in');
-                router.refresh();
-                loginModal.onClose();
-            }
+                if (callback?.ok) {
+                    toast.success('Login in');
+                    router.refresh();
+                    loginModal.onClose();
+                }
 
-            if(callback?.error){
-                toast.error(callback.error);
-                router.refresh();
-                loginModal.onClose();
-            }
-        })
+                if (callback?.error) {
+                    toast.error(callback.error);
+                    router.refresh();
+                    loginModal.onClose();
+                }
+            })
     }
 
     const toggle = useCallback(() => {
         loginModal.onClose();
         registerModal.onOpen();
     }, [loginModal, registerModal]);
+
+    const [showPassword, setShowPassword] = useState(false);
+
+    function setPasswordIcon(icon: any) {
+        if (icon == "visible") {
+            return (
+                <AiOutlineEyeInvisible size={30} />
+            )
+        } else if (icon == "invisible") {
+            return (
+                <AiOutlineEye size={30} />
+            )
+        }
+    }
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
@@ -81,21 +95,29 @@ const LoginModal = () => {
                 errors={errors}
                 required
             />
-            <Input
-                id="password"
-                label="Password"
-                type="password"
-                disabled={isLoading}
-                register={register}
-                errors={errors}
-                required
-            />
+            
+            <div className="flex flex-row items-center gap-4 w-full">
+                <Input
+                    id="password"
+                    label="Password"
+                    type={showPassword ? 'text' : 'password'}
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+                <button
+                    onMouseDown={() => setShowPassword(!showPassword)}
+                    onMouseUp={() => setShowPassword(!showPassword)}
+                    className="rounded px-2 py-1 text-zinc-400 cursor-pointer ">{showPassword ? setPasswordIcon("visible") : setPasswordIcon("invisible")}
+                </button>
+            </div>
         </div>
     );
 
     const footerContent = (
         <div className="flex flex-col gap-4 mt-3">
-            <hr/>
+            <hr />
             <Button
                 outline
                 label="Continue with Google"
