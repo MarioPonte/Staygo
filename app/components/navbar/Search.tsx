@@ -31,9 +31,7 @@ const Search = () => {
             const end = new Date(endDate as string);
             let diff = differenceInDays(end, start);
 
-            if(diff === 0){
-                diff = 1;
-            }
+            if(diff === 0) diff = 1;
 
             if(diff === 1) return `${diff} Day`;
 

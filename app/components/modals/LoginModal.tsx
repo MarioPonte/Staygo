@@ -24,6 +24,7 @@ const LoginModal = () => {
     const registerModal = useRegisterModal();
     const loginModal = useLoginModal();
     const [isLoading, setIsLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const {
         register,
@@ -67,8 +68,6 @@ const LoginModal = () => {
         registerModal.onOpen();
     }, [loginModal, registerModal]);
 
-    const [showPassword, setShowPassword] = useState(false);
-
     function setPasswordIcon(icon: any) {
         if (icon == "visible") {
             return (
@@ -96,7 +95,7 @@ const LoginModal = () => {
                 required
             />
             
-            <div className="flex flex-row items-center gap-4 w-full">
+            <div className="flex flex-row gap-4">
                 <Input
                     id="password"
                     label="Password"
@@ -111,7 +110,7 @@ const LoginModal = () => {
                     onMouseUp={() => setShowPassword(!showPassword)}
                     onTouchStart={() => setShowPassword(!showPassword)}
                     onTouchEnd={() => setShowPassword(!showPassword)}
-                    className="rounded px-2 py-1 text-zinc-400 cursor-pointer ">{showPassword ? setPasswordIcon("visible") : setPasswordIcon("invisible")}
+                    className="rounded text-zinc-400 cursor-pointer ">{showPassword ? setPasswordIcon("visible") : setPasswordIcon("invisible")}
                 </button>
             </div>
         </div>

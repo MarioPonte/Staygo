@@ -105,9 +105,7 @@ const Categories = () => {
 
     const isMainPage = pathname === '/';
 
-    if(!isMainPage){
-        return null;
-    }
+    if(!isMainPage) return null;
 
     return (
         <Container>

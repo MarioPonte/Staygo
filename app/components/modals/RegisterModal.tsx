@@ -1,7 +1,7 @@
 'use client';
 
 import axios from "axios";
-import { AiFillGithub } from "react-icons/ai";
+import { AiFillGithub, AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState} from "react";
 import {
@@ -24,6 +24,8 @@ const RegisterModal = () => {
     const loginModal = useLoginModal();
 
     const [isLoading, setIsLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+    const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
     const {
         register,
@@ -65,6 +67,18 @@ const RegisterModal = () => {
         loginModal.onOpen();
     }, [loginModal, registerModal]);
 
+    function setPasswordIcon(icon: any) {
+        if (icon == "visible") {
+            return (
+                <AiOutlineEyeInvisible size={30} />
+            )
+        } else if (icon == "invisible") {
+            return (
+                <AiOutlineEye size={30} />
+            )
+        }
+    }
+
     const bodyContent = (
         <div className="flex flex-col gap-4">
             <Heading
@@ -87,24 +101,42 @@ const RegisterModal = () => {
                 errors={errors}
                 required
             />
-            <Input
-                id="password"
-                label="Password"
-                type="password"
-                disabled={isLoading}
-                register={register}
-                errors={errors}
-                required
-            />
-            <Input
-                id="repeatPassword"
-                label="Repeat Password"
-                type="password"
-                disabled={isLoading}
-                register={register}
-                errors={errors}
-                required
-            />
+            <div className="flex flex-row gap-4">
+                <Input
+                    id="password"
+                    label="Password"
+                    type={showPassword ? 'text' : 'password'}
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+                <button
+                    onMouseDown={() => setShowPassword(!showPassword)}
+                    onMouseUp={() => setShowPassword(!showPassword)}
+                    onTouchStart={() => setShowPassword(!showPassword)}
+                    onTouchEnd={() => setShowPassword(!showPassword)}
+                    className="rounded text-zinc-400 cursor-pointer ">{showPassword ? setPasswordIcon("visible") : setPasswordIcon("invisible")}
+                </button>
+            </div>
+            <div className="flex flex-row gap-4">
+                <Input
+                    id="repeatPassword"
+                    label="Repeat Password"
+                    type={showRepeatPassword ? 'text' : 'password'}
+                    disabled={isLoading}
+                    register={register}
+                    errors={errors}
+                    required
+                />
+                <button
+                    onMouseDown={() => setShowRepeatPassword(!showRepeatPassword)}
+                    onMouseUp={() => setShowRepeatPassword(!showRepeatPassword)}
+                    onTouchStart={() => setShowRepeatPassword(!showRepeatPassword)}
+                    onTouchEnd={() => setShowRepeatPassword(!showRepeatPassword)}
+                    className="rounded text-zinc-400 cursor-pointer ">{showRepeatPassword ? setPasswordIcon("visible") : setPasswordIcon("invisible")}
+                </button>
+            </div>
         </div>
     );
 

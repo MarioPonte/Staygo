@@ -29,9 +29,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
     const refTwo = useRef<HTMLDivElement>(null);
 
     const handleClickOutside = (e: any) => {
-        if(!refOne?.current?.contains(e.target) && !refTwo?.current?.contains(e.target)){
-            setIsOpen(false);
-        }
+        if(!refOne?.current?.contains(e.target) && !refTwo?.current?.contains(e.target)) setIsOpen(false);
     }
 
     const router = useRouter();
@@ -45,9 +43,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
     }, []);
 
     const onRent = useCallback(() => {
-        if(!currentUser){
-            return loginModal.onOpen();
-        }
+        if(!currentUser) return loginModal.onOpen();
 
         rentModal.onOpen();
     }, [currentUser, loginModal, rentModal]);
