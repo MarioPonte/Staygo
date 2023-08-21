@@ -5,6 +5,10 @@
     <h1><a href="https://staygo.vercel.app/"><p>See the site</p></a></h1>
 </div>
 
+## About
+
+**Staygo** was a project I created during one course of "Code With Antonio" channel in Youtube. The course allowed me to have a deeper contact with the Next.js 13 technology, so that I could then create this project and improve it.
+
 ## State of the project
 
 ![Badge in development](https://img.shields.io/badge/STATUS-In%20Development-green.svg)
@@ -79,6 +83,7 @@ Here are listed all the functionalities of the project.
     - Rent a property and view your properties
     - Favorite a property and view your favorites
     - Book a property and view your books
+- `View all properties`: You can view all the information on the properties available for rent on the platform.
 - `Share properties`: If you like a property you can help more people get to know it by sharing it on social media from the share icon that appears on each property page.
 
 

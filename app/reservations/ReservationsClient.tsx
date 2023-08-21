@@ -24,19 +24,23 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({
   const [deletingId, setDeletingId] = useState('');
 
   const onCancel = useCallback((id: string) => {
-    setDeletingId(id);
+    const confirmation = confirm("Are you sure you want to cancel guest reservation?");
 
-    axios.delete(`/api/reservations/${id}`)
-    .then(() => {
-      toast.success('Reservation cancelled');
-      router.refresh();
-    })
-    .catch(() => {
-      toast.error('Something went wrong.')
-    })
-    .finally(() => {
-      setDeletingId('');
-    })
+    if(confirmation){
+      setDeletingId(id);
+
+      axios.delete(`/api/reservations/${id}`)
+      .then(() => {
+        toast.success('Reservation cancelled');
+        router.refresh();
+      })
+      .catch(() => {
+        toast.error('Something went wrong.');
+      })
+      .finally(() => {
+        setDeletingId('');
+      })
+    }
   }, [router]);
 
   return (
