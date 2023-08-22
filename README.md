@@ -9,6 +9,8 @@
 
 **Staygo** was a project I created during one course of "Code With Antonio" channel in Youtube. The course allowed me to have a deeper contact with the Next.js 13 technology, so that I could then create this project and improve it.
 
+This project was developed under the guidance of the developer [Antonio Erdeljac](https://github.com/antonioerdeljac).
+
 ## State of the project
 
 ![Badge in development](https://img.shields.io/badge/STATUS-In%20Development-green.svg)

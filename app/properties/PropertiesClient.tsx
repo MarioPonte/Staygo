@@ -24,29 +24,33 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
   const [deletingId, setDeletingId] = useState('');
 
   const onDelete = useCallback((id: string) => {
-    setDeletingId(id);
+    const confirmation = confirm("Are you sure you want to delete this property?");
 
-    axios.delete(`/api/listings/${id}`)
-    .then(() => {
-      toast.success('Listing deleted');
-      router.refresh();
-    })
-    .catch((error) => {
-      toast.error(error?.response?.data?.error)
-    })
-    .finally(() => {
-      setDeletingId('');
-    })
+    if (confirmation) {
+      setDeletingId(id);
+
+      axios.delete(`/api/listings/${id}`)
+        .then(() => {
+          toast.success('Listing deleted');
+          router.refresh();
+        })
+        .catch((error) => {
+          toast.error(error?.response?.data?.error)
+        })
+        .finally(() => {
+          setDeletingId('');
+        })
+    }
   }, [router]);
 
 
-  return ( 
+  return (
     <Container>
       <Heading
         title="Properties"
         subtitle="List of your properties"
       />
-      <div 
+      <div
         className="
           mt-10
           grid 
@@ -72,7 +76,7 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
         ))}
       </div>
     </Container>
-   );
+  );
 }
- 
+
 export default PropertiesClient;
