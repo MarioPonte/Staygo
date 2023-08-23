@@ -3,7 +3,7 @@
 import axios from "axios";
 import { AiFillGithub, AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { useCallback, useState} from "react";
+import { useCallback, useState } from "react";
 import {
     FieldValues,
     SubmitHandler,
@@ -43,23 +43,32 @@ const RegisterModal = () => {
     });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        if(data.password === data.repeatPassword){
-            setIsLoading(true);
-            axios.post("/api/register", data)
-                .then(() => {
-                        toast.success('Success!');
-                        registerModal.onClose();
-                        loginModal.onOpen();
-                })
-                .catch((error) => {
-                    toast.error("Something went wrong.");
-                })
-                .finally(() => {
-                    setIsLoading(false);
-                })
-        }else{
-            toast.error("You have entered different passwords.");
+        let verifyEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(data.email);
+        if (!verifyEmail){
+            toast.error("You have entered an invalid email address.");
+            return;
         }
+        if((data.name).length < 4 || (data.name).length > 26){
+            toast.error("Your name must be at least 4 and no more than 25 characters long.");
+            return;
+        }
+        if (data.password !== data.repeatPassword) {
+            toast.error("You have entered different passwords.");
+            return;
+        }
+        setIsLoading(true);
+        axios.post("/api/register", data)
+            .then(() => {
+                toast.success('Success!');
+                registerModal.onClose();
+                loginModal.onOpen();
+            })
+            .catch((error) => {
+                toast.error("Something went wrong.");
+            })
+            .finally(() => {
+                setIsLoading(false);
+            })
     }
 
     const toggle = useCallback(() => {
@@ -142,7 +151,7 @@ const RegisterModal = () => {
 
     const footerContent = (
         <div className="flex flex-col gap-4 mt-3">
-            <hr/>
+            <hr />
             <Button
                 outline
                 label="Continue with Google"

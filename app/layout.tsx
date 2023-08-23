@@ -19,13 +19,6 @@ export const metadata = {
   description: 'Shared accommodation platform.',
   manifest: '/manifest.json',
   themeColor: '#fff',
-  images: [
-    {
-      url: 'https://img.freepik.com/fotos-gratis/respingo-colorido-abstrato-3d-background-generativo-ai-background_60438-2509.jpg',
-      width: 800,
-      height: 600,
-    },
-  ],
 }
 
 const font = Nunito({
