@@ -17,6 +17,23 @@ body,
 
 .rdrMonth {
   width: 100% !important;
+  @apply bg-white dark:bg-neutral-700;
+}
+
+.rdrWeekDay{
+  @apply dark:text-neutral-200;
+}
+
+.rdrDayDisabled {
+  @apply bg-white dark:bg-neutral-600;
+}
+
+.rdrDayNumber span {
+  @apply dark:text-white;
+}
+
+.rdrDayDisabled .rdrDayNumber span {
+  @apply dark:text-neutral-400;
 }
 
 .rdrCalendarWrapper {

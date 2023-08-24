@@ -56,6 +56,10 @@ const RegisterModal = () => {
             toast.error("You have entered different passwords.");
             return;
         }
+        if ((data.password).length < 6) {
+            toast.error("Your password must be at least more than 5 characters long.");
+            return;
+        }
         setIsLoading(true);
         axios.post("/api/register", data)
             .then(() => {
