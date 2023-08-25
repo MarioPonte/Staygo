@@ -77,7 +77,7 @@ export const categories = [
         description: "This property is in Artic!"
     },
     {
-        label: "Cave",
+        label: "Caves",
         icon: GiCaveEntrance,
         description: "This property is in a cave!"
     },

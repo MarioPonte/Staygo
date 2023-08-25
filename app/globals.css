@@ -41,6 +41,10 @@ body,
   width: 100% !important;
 }
 
+.rdrMonthAndYearWrapper{
+  @apply dark:bg-neutral-200;
+}
+
 @layer components {
   /* .my-react-select-container {
   } */
