@@ -15,6 +15,7 @@ import { categories } from "@/app/components/navbar/Categories";
 import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
 import ListingReservation from "@/app/components/listings/ListingReservation";
+import ListingComments from "@/app/components/listings/ListingComments";
 
 const initialDateRange = {
   startDate: new Date(),
@@ -158,6 +159,10 @@ const ListingClient: React.FC<ListingClientProps> = ({
               />
             </div>
           </div>
+          <ListingComments
+            title={listing.title}
+            locationValue={listing.locationValue}
+          />
         </div>
       </div>
     </Container>
