@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { AiFillGithub, AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { FaFacebook } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useCallback, useState } from "react";
 import {
@@ -161,6 +162,13 @@ const RegisterModal = () => {
                 label="Continue with Google"
                 icon={FcGoogle}
                 onClick={() => signIn('google')}
+            />
+            <Button
+                outline
+                label="Continue with Facebook"
+                icon={FaFacebook}
+                colorIcon="text-blue-500"
+                onClick={() => signIn('facebook')}
             />
             <Button
                 outline
