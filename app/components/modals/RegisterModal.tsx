@@ -165,13 +165,6 @@ const RegisterModal = () => {
             />
             <Button
                 outline
-                label="Continue with Facebook"
-                icon={FaFacebook}
-                colorIcon="text-blue-500"
-                onClick={() => signIn('facebook')}
-            />
-            <Button
-                outline
                 label="Continue with Github"
                 icon={AiFillGithub}
                 onClick={() => signIn('github')}
