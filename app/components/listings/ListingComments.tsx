@@ -1,20 +1,19 @@
 'use client';
 
-import useCountries from "@/app/hooks/useCountries";
-import Heading from "../Heading";
+import Avatar from "../Avatar";
+import { SafeUser } from "@/app/types";
 
 interface ListingHeadProps {
     title: string;
     locationValue: string;
+    user: SafeUser;
 }
 
 const ListingHead: React.FC<ListingHeadProps> = ({
     title,
-    locationValue
+    locationValue,
+    user
 }) => {
-    const { getByValue } = useCountries();
-
-    const location = getByValue(locationValue);
 
     return (
         <>
@@ -45,6 +44,26 @@ const ListingHead: React.FC<ListingHeadProps> = ({
                 >
                     See what other people say about this property.
                 </div>
+                {
+                    /* COMENTÁRIO BASE
+                        <div className="mt-4 flex flex-row">
+                            <div>
+                                <Avatar src={user?.image} />
+                            </div>
+                            <div className="ml-4">
+                                <div className="font-bold text-sm">
+                                    Mário
+                                </div>
+                                <div className="text-sm">
+                                    Foi a melhor viagem de cruzeiro que já fiz.
+                                </div>
+                                <div className="text-xs font-light text-neutral-500">
+                                    Agosto de 2023
+                                </div>
+                            </div>
+                        </div>
+                    */
+                }
                 <div className="text-red-500 mt-4">
                     Comments are unavailable indefinitely
                 </div>
