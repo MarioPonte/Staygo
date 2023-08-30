@@ -1,19 +1,6 @@
 'use client';
 
-import Avatar from "../Avatar";
-import { SafeUser } from "@/app/types";
-
-interface ListingHeadProps {
-    title: string;
-    locationValue: string;
-    user: SafeUser;
-}
-
-const ListingHead: React.FC<ListingHeadProps> = ({
-    title,
-    locationValue,
-    user
-}) => {
+const ListingComments = () => {
 
     return (
         <>
@@ -72,4 +59,4 @@ const ListingHead: React.FC<ListingHeadProps> = ({
     )
 }
 
-export default ListingHead;
+export default ListingComments;

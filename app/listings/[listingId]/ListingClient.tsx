@@ -159,10 +159,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
               />
             </div>
           </div>
-          <ListingComments
-            title={listing.title}
-            locationValue={listing.locationValue}
-          />
+          <ListingComments />
         </div>
       </div>
     </Container>
