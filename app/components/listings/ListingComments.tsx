@@ -1,6 +1,59 @@
 'use client';
 
-const ListingComments = () => {
+import axios from "axios";
+import {
+    FieldValues,
+    SubmitHandler,
+    useForm
+} from "react-hook-form";
+import { useCallback, useState } from "react";
+import { toast } from "react-hot-toast";
+import { SafeListing, SafeUser } from "@/app/types";
+
+interface CommentsProps {
+    listing: SafeListing & {
+      user: SafeUser;
+    };
+    currentUser?: SafeUser | null;
+}
+
+const ListingComments: React.FC<CommentsProps> = ({
+    listing,
+    currentUser
+  }) => {
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const {
+        register,
+        handleSubmit,
+        formState: {
+            errors,
+        }
+    } = useForm<FieldValues>({
+        defaultValues: {
+            description: ""
+        }
+    });
+
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+        setIsLoading(true);
+        axios.post("/api/comments", JSON.stringify({
+            description: "Olarilole",
+            userId: currentUser?.id,
+            listingId: listing?.id
+        }))
+            .then(() => {
+                toast.success('Success!');
+            })
+            .catch((error) => {
+                console.log("Erro: " + error);
+                toast.error("Something went wrong.");
+            })
+            .finally(() => {
+                setIsLoading(false);
+            })
+    }
 
     return (
         <>
@@ -51,6 +104,31 @@ const ListingComments = () => {
                         </div>
                     */
                 }
+
+                <input
+                    id="description"
+                    type="text"
+                    placeholder="Say something"
+                    className={`
+                        peer
+                        w-full
+                        p-4
+                        font-light 
+                        bg-white
+                        dark:bg-zinc-900
+                        border-2
+                        dark:border-zinc-400
+                        dark:text-zinc-400
+                        rounded-md
+                        outline-none
+                        transition
+                        disabled:opacity-70
+                        disabled:cursor-not-allowed
+                    `}
+                />
+                <button onClick={handleSubmit(onSubmit)}>
+                    Send
+                </button>
                 <div className="text-red-500 mt-4">
                     Comments are unavailable indefinitely
                 </div>

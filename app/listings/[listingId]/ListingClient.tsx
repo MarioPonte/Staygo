@@ -159,7 +159,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
               />
             </div>
           </div>
-          <ListingComments />
+          <ListingComments listing={listing} currentUser={currentUser} />
         </div>
       </div>
     </Container>
