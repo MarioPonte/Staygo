@@ -25,11 +25,7 @@ const ListingComments: React.FC<CommentsProps> = ({
     const [isLoading, setIsLoading] = useState(false);
 
     const {
-        register,
-        handleSubmit,
-        formState: {
-            errors,
-        }
+        handleSubmit
     } = useForm<FieldValues>({
         defaultValues: {
             description: ""
@@ -37,13 +33,15 @@ const ListingComments: React.FC<CommentsProps> = ({
     });
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
+        const comment = document.querySelector("#description");
         setIsLoading(true);
         axios.post("/api/comments", JSON.stringify({
-            description: "Olarilole",
+            description: (comment as HTMLInputElement)?.value,
             userId: currentUser?.id,
             listingId: listing?.id
         }))
             .then(() => {
+                (comment as HTMLInputElement).value = "";
                 toast.success('Success!');
             })
             .catch((error) => {
@@ -105,30 +103,38 @@ const ListingComments: React.FC<CommentsProps> = ({
                     */
                 }
 
-                <input
-                    id="description"
-                    type="text"
-                    placeholder="Say something"
-                    className={`
-                        peer
-                        w-full
-                        p-4
-                        font-light 
-                        bg-white
-                        dark:bg-zinc-900
-                        border-2
-                        dark:border-zinc-400
-                        dark:text-zinc-400
-                        rounded-md
-                        outline-none
-                        transition
-                        disabled:opacity-70
-                        disabled:cursor-not-allowed
-                    `}
-                />
-                <button onClick={handleSubmit(onSubmit)}>
-                    Send
-                </button>
+                {currentUser ? (
+                    <>
+                        <input
+                            id="description"
+                            type="text"
+                            placeholder="Say something"
+                            className={`
+                                peer
+                                w-full
+                                p-4
+                                font-light 
+                                bg-white
+                                dark:bg-zinc-900
+                                border-2
+                                dark:border-zinc-400
+                                dark:text-zinc-400
+                                rounded-md
+                                outline-none
+                                transition
+                                disabled:opacity-70
+                                disabled:cursor-not-allowed
+                            `}
+                        />
+                        <button onClick={handleSubmit(onSubmit)}>
+                            Send
+                        </button>
+                    </>
+                ) : (
+                    <> 
+                    </>
+                )}
+
                 <div className="text-red-500 mt-4">
                     Comments are unavailable indefinitely
                 </div>
