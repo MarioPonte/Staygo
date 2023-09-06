@@ -27,6 +27,14 @@ const ListingComments: React.FC<CommentsProps> = ({
 
     // USAR API DO AXIOS PARA PEGAR DADOS DO PRISMA
 
+    let commentsCall = async () => {
+        return await axios.get('/api/getComments', {}).then(
+            (response) => {
+                return response.data[1].description;
+            }
+        );
+    }
+
     const {
         handleSubmit
     } = useForm<FieldValues>({
@@ -129,7 +137,7 @@ const ListingComments: React.FC<CommentsProps> = ({
                                     Mário
                                 </div>
                                 <div className="text-sm">
-                                    Foi a melhor viagem de cruzeiro que já fiz.
+                                    {commentsCall()}
                                 </div>
                                 <div className="text-xs font-light text-neutral-500">
                                     Agosto de 2023
