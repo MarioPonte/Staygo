@@ -10,14 +10,12 @@ import { useCallback, useState } from "react";
 import { toast } from "react-hot-toast";
 import { SafeListing, SafeUser } from "@/app/types";
 import Avatar from "../Avatar";
-import getComments, { ICommentsParams } from "@/app/actions/getComments";
 
 interface CommentsProps {
     listing: SafeListing & {
       user: SafeUser;
     };
     currentUser?: SafeUser | null;
-    commentsParams: ICommentsParams;
 }
 
 const ListingComments: React.FC<CommentsProps> = ({
