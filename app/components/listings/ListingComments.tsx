@@ -28,11 +28,11 @@ const ListingComments: React.FC<CommentsProps> = ({
     const [isLoading, setIsLoading] = useState(false);
 
     // USAR API DO AXIOS PARA PEGAR DADOS DO PRISMA
-    let commentsCall = async () => {
-        return await axios.get('/api/getComments', {}).then(
+    let commentsCall = () => {
+        return axios.get('/api/getComments').then(
             (response) => {
                 console.log(response.data);
-                return response.data;
+                response.data;
             }
         );
     }
