@@ -6,7 +6,7 @@ import {
     SubmitHandler,
     useForm
 } from "react-hook-form";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { SafeListing, SafeUser } from "@/app/types";
 import Avatar from "../Avatar";
@@ -18,6 +18,8 @@ interface CommentsProps {
     currentUser?: SafeUser | null;
 }
 
+let allComments: any = null;
+
 const ListingComments: React.FC<CommentsProps> = ({
     listing,
     currentUser
@@ -26,13 +28,17 @@ const ListingComments: React.FC<CommentsProps> = ({
     const [isLoading, setIsLoading] = useState(false);
 
     // USAR API DO AXIOS PARA PEGAR DADOS DO PRISMA
-
     let commentsCall = async () => {
         return await axios.get('/api/getComments', {}).then(
             (response) => {
-                return response.data[1].description;
+                console.log(response.data);
+                return response.data;
             }
         );
+    }
+
+    if(allComments === null){
+        allComments = commentsCall();
     }
 
     const {
@@ -137,7 +143,7 @@ const ListingComments: React.FC<CommentsProps> = ({
                                     Mário
                                 </div>
                                 <div className="text-sm">
-                                    {commentsCall()}
+                                    aaa
                                 </div>
                                 <div className="text-xs font-light text-neutral-500">
                                     Agosto de 2023
