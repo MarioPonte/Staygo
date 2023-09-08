@@ -10,6 +10,7 @@ import { useCallback, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { SafeListing, SafeUser } from "@/app/types";
 import Avatar from "../Avatar";
+import GetAllComments from "./GetAllComments";
 
 interface CommentsProps {
     listing: SafeListing & {
@@ -18,28 +19,12 @@ interface CommentsProps {
     currentUser?: SafeUser | null;
 }
 
-let allComments: any = null;
-
 const ListingComments: React.FC<CommentsProps> = ({
     listing,
     currentUser
   }) => {
 
     const [isLoading, setIsLoading] = useState(false);
-
-    // USAR API DO AXIOS PARA PEGAR DADOS DO PRISMA
-    let commentsCall = () => {
-        return axios.get('/api/getComments').then(
-            (response) => {
-                console.log(response.data);
-                response.data;
-            }
-        );
-    }
-
-    if(allComments === null){
-        allComments = commentsCall();
-    }
 
     const {
         handleSubmit
@@ -154,6 +139,8 @@ const ListingComments: React.FC<CommentsProps> = ({
                 <div className="text-red-500 mt-4">
                     Comments are unavailable indefinitely
                 </div>
+
+                <GetAllComments/>
             </div>
         </>
     )
