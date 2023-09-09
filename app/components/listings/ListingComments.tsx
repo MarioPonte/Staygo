@@ -136,10 +136,6 @@ const ListingComments: React.FC<CommentsProps> = ({
                             </div>
                         </div>
 
-                <div className="text-red-500 mt-4">
-                    Comments are unavailable indefinitely
-                </div>
-
                 <GetAllComments/>
             </div>
         </>
