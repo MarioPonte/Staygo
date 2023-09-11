@@ -6,7 +6,7 @@ import {
     SubmitHandler,
     useForm
 } from "react-hook-form";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { SafeListing, SafeUser } from "@/app/types";
 import Avatar from "../Avatar";
