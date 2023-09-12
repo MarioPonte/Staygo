@@ -41,7 +41,7 @@ function GetAllCommentsInfo({ users, comments }: { users: any; comments: any }) 
 }
 
 export default function GetAllComments() {
-
+    
     const [commentData, setCommentData] = useState([]);
     const [users, setUsers] = useState<any[]>([]);
 
@@ -61,9 +61,7 @@ export default function GetAllComments() {
             .catch(error => {
                 console.error('Erro ao buscar os utilizadores:', error);
             });
-    }, []);
-
-    console.log(commentData);
+    }, [commentData, users]); // Adicione commentData e users como dependências TENTATIVA
 
     return (
         <div className="App">
