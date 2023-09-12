@@ -61,7 +61,7 @@ export default function GetAllComments() {
             .catch(error => {
                 console.error('Erro ao buscar os utilizadores:', error);
             });
-    }, [commentData, users]); // Adicione commentData e users como dependências TENTATIVA
+    }, []);
 
     return (
         <div className="App">
