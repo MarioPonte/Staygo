@@ -63,6 +63,8 @@ export default function GetAllComments() {
             });
     }, []);
 
+    console.log(commentData);
+
     return (
         <div className="App">
             <GetAllCommentsInfo users={users} comments={commentData} />
