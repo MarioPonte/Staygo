@@ -9,7 +9,6 @@ import {
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { SafeListing, SafeUser } from "@/app/types";
-import Avatar from "../Avatar";
 import GetAllComments from "./GetAllComments";
 
 interface CommentsProps {
@@ -87,7 +86,7 @@ const ListingComments: React.FC<CommentsProps> = ({
                     See what other people say about this property.
                 </div>
 
-                {currentUser ? (
+                {currentUser && (
                     <>
                         <input
                             id="description"
@@ -114,27 +113,7 @@ const ListingComments: React.FC<CommentsProps> = ({
                             Send
                         </button>
                     </>
-                ) : (
-                    <> 
-                    </>
                 )}
-
-                        <div className="mt-4 flex flex-row">
-                            <div>
-                                <Avatar src={currentUser?.image} />
-                            </div>
-                            <div className="ml-4">
-                                <div className="font-bold text-sm">
-                                    Mário
-                                </div>
-                                <div className="text-sm">
-                                    aaa
-                                </div>
-                                <div className="text-xs font-light text-neutral-500">
-                                    Agosto de 2023
-                                </div>
-                            </div>
-                        </div>
 
                 <GetAllComments/>
             </div>

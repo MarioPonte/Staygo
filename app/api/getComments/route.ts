@@ -6,7 +6,11 @@ export async function GET(
     request: Request
 ){
 
-    const comments = await prisma.comment.findMany();
+    const comments = await prisma.comment.findMany({
+        orderBy: {
+            createdAt: 'desc'
+        }
+    });
 
     return NextResponse.json(comments);
 }
