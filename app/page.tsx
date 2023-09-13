@@ -1,17 +1,20 @@
 import getCurrentUser from "./actions/getCurrentUser";
 import getListings, { IListingsParams } from "./actions/getListings";
+import getComments, { ICommentsParams } from "./actions/getCommentsTest";
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import ListingCard from "./components/listings/ListingCard";
+import GetAllComments from "./pageCopy";
 
 export const dynamic = 'force-dynamic'
 
 interface HomeProps {
   searchParams: IListingsParams
+  searchParamsCom: ICommentsParams,
 };
 
-const Home = async ({ searchParams }: HomeProps) => {
+const Home = async ({ searchParams, searchParamsCom }: HomeProps) => {
   const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
 
@@ -48,6 +51,7 @@ const Home = async ({ searchParams }: HomeProps) => {
           })}
         </div>
       </Container>
+      <GetAllComments searchParams={searchParamsCom}/>
     </ClientOnly>
   )
 }
