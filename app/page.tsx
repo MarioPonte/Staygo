@@ -51,7 +51,7 @@ const Home = async ({ searchParams }: HomeProps) => {
           })}
         </div>
       </Container>
-      { /* <GetAllComments searchParams={searchParamsCom}/> */}
+      <GetAllComments/>
     </ClientOnly>
   )
 }
