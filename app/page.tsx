@@ -11,10 +11,10 @@ export const dynamic = 'force-dynamic'
 
 interface HomeProps {
   searchParams: IListingsParams
-  searchParamsCom: ICommentsParams,
+  // searchParamsCom: ICommentsParams,
 };
 
-const Home = async ({ searchParams, searchParamsCom }: HomeProps) => {
+const Home = async ({ searchParams }: HomeProps) => {
   const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
 
@@ -51,7 +51,7 @@ const Home = async ({ searchParams, searchParamsCom }: HomeProps) => {
           })}
         </div>
       </Container>
-      <GetAllComments searchParams={searchParamsCom}/>
+      { /* <GetAllComments searchParams={searchParamsCom}/> */}
     </ClientOnly>
   )
 }
