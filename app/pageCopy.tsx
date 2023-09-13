@@ -29,7 +29,7 @@ const Home = async (searchParamsCom: any) => {
           </div>
           {comments.map((comment) => {
             return (
-              <div>
+              <div key={comment.id}>
                 Oi
               </div>
             )
