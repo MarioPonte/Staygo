@@ -5,7 +5,7 @@ import EmptyState from "./components/EmptyState";
 
 export const dynamic = 'force-dynamic'
 
-const Home = async (searchParamsCom: any) => {
+const GetAllComments = async (searchParamsCom: any) => {
 
   // This is a test
   const comments = await getComments(searchParamsCom);
@@ -40,4 +40,4 @@ const Home = async (searchParamsCom: any) => {
   )
 }
 
-export default Home;
+export default GetAllComments;
