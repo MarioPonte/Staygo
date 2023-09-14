@@ -9,19 +9,21 @@ import {
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { SafeListing, SafeUser } from "@/app/types";
-import GetAllComments from "./GetAllComments";
+import GetAllComments from "@/app/getComments";
 
 interface CommentsProps {
     listing: SafeListing & {
-      user: SafeUser;
+        user: SafeUser;
     };
+    comments?: any;
     currentUser?: SafeUser | null;
 }
 
 const ListingComments: React.FC<CommentsProps> = ({
     listing,
+    comments,
     currentUser
-  }) => {
+}) => {
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -54,7 +56,7 @@ const ListingComments: React.FC<CommentsProps> = ({
             })
     }
 
-    
+
 
     return (
         <>
@@ -115,7 +117,24 @@ const ListingComments: React.FC<CommentsProps> = ({
                     </>
                 )}
 
-                <GetAllComments/>
+                {comments.length === 0 ? (
+                    <div>
+                        Esta propiedade não pussui comentarios.
+                    </div>
+                ) : (
+                    <div>
+                        <div className="mt-8 mb-4">
+                            Teste dos comentários:
+                        </div>
+                        {comments.map((comment: any) => {
+                            return (
+                                <div key={comment.id}>
+                                    comentario
+                                </div>
+                            )
+                        })}
+                    </div>
+                )}
             </div>
         </>
     )

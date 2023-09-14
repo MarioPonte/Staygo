@@ -1,11 +1,11 @@
+import getComments from "./actions/getCommentsTest";
 import getCurrentUser from "./actions/getCurrentUser";
 import getListings, { IListingsParams } from "./actions/getListings";
-import getComments, { ICommentsParams } from "./actions/getCommentsTest";
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import ListingCard from "./components/listings/ListingCard";
-import GetAllComments from "./pageCopy";
+import GetAllComments from "./getComments";
 
 export const dynamic = 'force-dynamic'
 
@@ -17,6 +17,11 @@ interface HomeProps {
 const Home = async ({ searchParams }: HomeProps) => {
   const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
+
+  // This is a test
+  const comments = await getComments();
+
+  console.log(comments);
 
   if(listings.length === 0){
     return (
@@ -51,7 +56,6 @@ const Home = async ({ searchParams }: HomeProps) => {
           })}
         </div>
       </Container>
-      <GetAllComments/>
     </ClientOnly>
   )
 }

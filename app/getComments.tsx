@@ -25,12 +25,12 @@ const GetAllComments = async () => {
       <Container>
         <div className="mt-8">
           <div className="mb-4">
-            Teste Comentários
+            Teste Comentários:
           </div>
           {comments.map((comment) => {
             return (
               <div key={comment.id}>
-                Oi
+                {comment.description}
               </div>
             )
           })}

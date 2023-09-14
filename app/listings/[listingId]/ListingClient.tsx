@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { differenceInDays, eachDayOfInterval } from 'date-fns';
 
 import useLoginModal from "@/app/hooks/useLoginModal";
-import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
+import { SafeComment, SafeListing, SafeReservation, SafeUser } from "@/app/types";
 
 import Container from "@/app/components/Container";
 import { categories } from "@/app/components/navbar/Categories";
@@ -28,11 +28,13 @@ interface ListingClientProps {
   listing: SafeListing & {
     user: SafeUser;
   };
+  comments?: any;
   currentUser?: SafeUser | null;
 }
 
 const ListingClient: React.FC<ListingClientProps> = ({
   listing,
+  comments,
   reservations = [],
   currentUser
 }) => {
@@ -159,7 +161,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
               />
             </div>
           </div>
-          <ListingComments listing={listing} currentUser={currentUser} />
+          <ListingComments listing={listing} comments={comments} currentUser={currentUser} />
         </div>
       </div>
     </Container>
