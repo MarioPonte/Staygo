@@ -10,6 +10,8 @@ import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { SafeListing, SafeUser } from "@/app/types";
 import GetAllComments from "@/app/getComments";
+import Avatar from "../Avatar";
+import { format } from 'date-fns';
 
 interface CommentsProps {
     listing: SafeListing & {
@@ -122,14 +124,19 @@ const ListingComments: React.FC<CommentsProps> = ({
                         Esta propiedade não pussui comentarios.
                     </div>
                 ) : (
-                    <div>
-                        <div className="mt-8 mb-4">
-                            Teste dos comentários:
-                        </div>
+                    <div className="mt-8">
                         {comments.map((comment: any) => {
+                            let dateVal = new Date(comment.createdAt);
                             return (
-                                <div key={comment.id}>
-                                    comentario
+                                <div key={comment.id} className="mt-8">
+                                    <div className="flex items-center">
+                                        <Avatar src={currentUser?.image}/>
+                                        <span className="font-semibold ml-2 mr-4">Manuel Gomes</span>
+                                        <span className="font-Light text-neutral-600">{format(dateVal, "MMM. d, yyyy")}</span>
+                                    </div>
+                                    <div className="font-light">
+                                        {comment.description}
+                                    </div>
                                 </div>
                             )
                         })}

@@ -18,11 +18,6 @@ const Home = async ({ searchParams }: HomeProps) => {
   const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
 
-  // This is a test
-  const comments = await getComments();
-
-  console.log(comments);
-
   if(listings.length === 0){
     return (
       <ClientOnly>
