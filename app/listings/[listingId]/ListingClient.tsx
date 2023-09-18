@@ -29,6 +29,7 @@ interface ListingClientProps {
     user: SafeUser;
   };
   comments?: any;
+  users?: any
   currentUser?: SafeUser | null;
 }
 
@@ -36,6 +37,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
   listing,
   comments,
   reservations = [],
+  users,
   currentUser
 }) => {
   const loginModal = useLoginModal();
@@ -161,7 +163,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
               />
             </div>
           </div>
-          <ListingComments listing={listing} comments={comments} currentUser={currentUser} />
+          <ListingComments listing={listing} comments={comments} users={users} currentUser={currentUser} />
         </div>
       </div>
     </Container>

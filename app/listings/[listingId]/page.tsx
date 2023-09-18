@@ -7,6 +7,7 @@ import EmptyState from "@/app/components/EmptyState";
 import ListingClient from "./ListingClient";
 import getReservations from "@/app/actions/getReservations";
 import getComments from "@/app/actions/getCommentsTest";
+import { getUsers } from "@/app/actions/getUsers";
 
 interface IParams {
     listingId?: string;
@@ -15,9 +16,8 @@ interface IParams {
 const ListingPage = async ({ params }: { params: IParams }) => {
     const listing = await getListingById(params);
     const reservations = await getReservations(params);
+    const users = await getUsers();
     const currentUser = await getCurrentUser();
-
-    // This is a test
     const comments = await getComments();
 
     if (!listing) {
@@ -34,6 +34,7 @@ const ListingPage = async ({ params }: { params: IParams }) => {
                 listing={listing}
                 comments={comments}
                 reservations={reservations}
+                users={users}
                 currentUser={currentUser}
             />
         </ClientOnly>

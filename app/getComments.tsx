@@ -10,8 +10,6 @@ const GetAllComments = async () => {
   // This is a test
   const comments = await getComments();
 
-  console.log(comments);
-
   if (comments.length === 0) {
     return (
       <ClientOnly>

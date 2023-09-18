@@ -1,17 +1,14 @@
-import getComments from "./actions/getCommentsTest";
 import getCurrentUser from "./actions/getCurrentUser";
 import getListings, { IListingsParams } from "./actions/getListings";
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
 import ListingCard from "./components/listings/ListingCard";
-import GetAllComments from "./getComments";
 
 export const dynamic = 'force-dynamic'
 
 interface HomeProps {
   searchParams: IListingsParams
-  // searchParamsCom: ICommentsParams,
 };
 
 const Home = async ({ searchParams }: HomeProps) => {
