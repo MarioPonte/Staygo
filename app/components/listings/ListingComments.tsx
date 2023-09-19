@@ -38,6 +38,8 @@ const ListingComments: React.FC<CommentsProps> = ({
         }
     });
 
+    let listingComments = comments.filter((comment:any) => comment.listingId === listing.id);
+
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         const comment = document.querySelector("#description");
         setIsLoading(true);
@@ -120,19 +122,20 @@ const ListingComments: React.FC<CommentsProps> = ({
                     </>
                 )}
 
-                {comments.length === 0 ? (
+                {listingComments.length === 0 ? (
                     <div>
                         Esta propiedade não pussui comentarios.
                     </div>
                 ) : (
                     <div className="mt-8">
-                        {comments.map((comment: any) => {
+                        {listingComments.map((comment: any) => {
                             let dateVal = new Date(comment.createdAt);
+                            let user = users.find((user:any) => user.id === comment.userId);
                             return (
                                 <div key={comment.id} className="mt-8">
-                                    <div className="flex items-center">
-                                        <Avatar src={currentUser?.image}/>
-                                        <span className="font-semibold ml-2 mr-4">{users.find((user:any) => user.id === comment.userId).name}</span>
+                                    <div className="flex items-center text-sm">
+                                        <Avatar src={user?.image}/>
+                                        <span className="font-semibold ml-2 mr-3">{user.name}</span>
                                         <span className="font-Light text-neutral-600">{format(dateVal, "MMM. d, yyyy")}</span>
                                     </div>
                                     <div className="font-light">
