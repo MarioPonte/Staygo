@@ -11,6 +11,7 @@ import { toast } from "react-hot-toast";
 import { SafeListing, SafeUser } from "@/app/types";
 import Avatar from "../Avatar";
 import { format } from 'date-fns';
+import Button from "../Button";
 
 interface CommentsProps {
     listing: SafeListing & {
@@ -30,6 +31,8 @@ const ListingComments: React.FC<CommentsProps> = ({
 
     const [isLoading, setIsLoading] = useState(false);
 
+    const [postButtons, setPostButtons] = useState(false);
+
     const {
         handleSubmit
     } = useForm<FieldValues>({
@@ -38,10 +41,11 @@ const ListingComments: React.FC<CommentsProps> = ({
         }
     });
 
-    let listingComments = comments.filter((comment:any) => comment.listingId === listing.id);
+    let listingComments = comments.filter((comment: any) => comment.listingId === listing.id);
+
+    const comment = document.querySelector("#description");
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        const comment = document.querySelector("#description");
         setIsLoading(true);
         axios.post("/api/comments", JSON.stringify({
             description: (comment as HTMLInputElement)?.value,
@@ -60,8 +64,6 @@ const ListingComments: React.FC<CommentsProps> = ({
                 setIsLoading(false);
             })
     }
-
-
 
     return (
         <>
@@ -95,12 +97,14 @@ const ListingComments: React.FC<CommentsProps> = ({
 
                 {currentUser && (
                     <>
-                        <input
+                        <textarea
                             id="description"
-                            type="text"
                             placeholder="Say something"
+                            maxLength={1000}
+                            onFocus={() => setPostButtons(true)}
                             className={`
                                 peer
+                                resize-none
                                 w-full
                                 p-4
                                 font-light 
@@ -114,11 +118,14 @@ const ListingComments: React.FC<CommentsProps> = ({
                                 transition
                                 disabled:opacity-70
                                 disabled:cursor-not-allowed
-                            `}
-                        />
-                        <button onClick={handleSubmit(onSubmit)}>
-                            Send
-                        </button>
+                            `}>
+                        </textarea>
+                        {postButtons && (
+                            <div>
+                                <Button label="Post Comment" small onClick={handleSubmit(onSubmit)} />
+                                <Button label="Cancel" outline small onClick={() => { setPostButtons(false); (comment as HTMLInputElement).value = ""; }} />
+                            </div>
+                        )}
                     </>
                 )}
 
@@ -130,11 +137,11 @@ const ListingComments: React.FC<CommentsProps> = ({
                     <div className="mt-8">
                         {listingComments.map((comment: any) => {
                             let dateVal = new Date(comment.createdAt);
-                            let user = users.find((user:any) => user.id === comment.userId);
+                            let user = users.find((user: any) => user.id === comment.userId);
                             return (
                                 <div key={comment.id} className="mt-8">
                                     <div className="flex items-center text-sm">
-                                        <Avatar src={user?.image}/>
+                                        <Avatar src={user?.image} />
                                         <span className="font-semibold ml-2 mr-3">{user.name}</span>
                                         <span className="font-Light text-neutral-600">{format(dateVal, "MMM. d, yyyy")}</span>
                                     </div>
