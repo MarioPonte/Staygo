@@ -12,6 +12,7 @@ import { SafeListing, SafeUser } from "@/app/types";
 import Avatar from "../Avatar";
 import { format } from 'date-fns';
 import Button from "../Button";
+import { useRouter } from 'next/navigation';
 
 interface CommentsProps {
     listing: SafeListing & {
@@ -31,7 +32,12 @@ const ListingComments: React.FC<CommentsProps> = ({
 
     const [isLoading, setIsLoading] = useState(false);
 
+    const [inputValue, setInputValue] = useState('');
     const [postButtons, setPostButtons] = useState(false);
+
+    const handleInputChange = (e: any) => {
+        setInputValue(e.target.value);
+    };
 
     const {
         handleSubmit
@@ -40,6 +46,8 @@ const ListingComments: React.FC<CommentsProps> = ({
             description: ""
         }
     });
+
+    const router = useRouter();
 
     let listingComments = comments.filter((comment: any) => comment.listingId === listing.id);
 
@@ -53,8 +61,9 @@ const ListingComments: React.FC<CommentsProps> = ({
             listingId: listing?.id
         }))
             .then(() => {
-                (comment as HTMLInputElement).value = "";
+                setInputValue("");
                 toast.success('Success!');
+                router.refresh();
             })
             .catch((error) => {
                 console.log("Erro: " + error);
@@ -99,6 +108,8 @@ const ListingComments: React.FC<CommentsProps> = ({
                     <>
                         <textarea
                             id="description"
+                            value={inputValue}
+                            onChange={handleInputChange}
                             placeholder="Say something"
                             maxLength={1000}
                             onFocus={() => setPostButtons(true)}
@@ -118,12 +129,13 @@ const ListingComments: React.FC<CommentsProps> = ({
                                 transition
                                 disabled:opacity-70
                                 disabled:cursor-not-allowed
+                                focus:border-black
                             `}>
                         </textarea>
                         {postButtons && (
-                            <div>
-                                <Button label="Post Comment" small onClick={handleSubmit(onSubmit)} />
-                                <Button label="Cancel" outline small onClick={() => { setPostButtons(false); (comment as HTMLInputElement).value = ""; }} />
+                            <div className="flex flex-row items-center gap-4 w-full">
+                                <Button label="Cancel" outline small onClick={() => { setPostButtons(false); setInputValue(""); }} />
+                                <Button label="Post Comment" disabled={!inputValue} small onClick={handleSubmit(onSubmit)} />
                             </div>
                         )}
                     </>
