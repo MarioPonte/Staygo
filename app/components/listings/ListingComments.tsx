@@ -6,7 +6,7 @@ import {
     SubmitHandler,
     useForm
 } from "react-hook-form";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { toast } from "react-hot-toast";
 import { SafeListing, SafeUser } from "@/app/types";
 import Avatar from "../Avatar";
@@ -48,6 +48,20 @@ const ListingComments: React.FC<CommentsProps> = ({
     });
 
     const router = useRouter();
+
+    const onDelete = (id: string) => {
+        const confirmation = confirm("Are you sure you want to delete comment?");
+        if (confirmation) {
+            axios.delete(`/api/comments/${id}`)
+                .then(() => {
+                    toast.success('Comment deleted');
+                    router.refresh();
+                })
+                .catch(() => {
+                    toast.error('Something went wrong.');
+                })
+        }
+    };
 
     let listingComments = comments.filter((comment: any) => comment.listingId === listing.id);
 
@@ -156,6 +170,7 @@ const ListingComments: React.FC<CommentsProps> = ({
                                         <Avatar src={user?.image} />
                                         <span className="font-semibold ml-2 mr-3">{user.name}</span>
                                         <span className="font-Light text-neutral-600">{format(dateVal, "MMM. d, yyyy")}</span>
+                                        <button className="font-semibold ml-2 mr-3" onClick={() => onDelete(comment.id)}>Delete</button>
                                     </div>
                                     <div className="font-light">
                                         {comment.description}
