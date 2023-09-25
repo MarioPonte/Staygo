@@ -13,6 +13,7 @@ import Avatar from "../Avatar";
 import { format } from 'date-fns';
 import Button from "../Button";
 import { useRouter } from 'next/navigation';
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 interface CommentsProps {
     listing: SafeListing & {
@@ -77,6 +78,7 @@ const ListingComments: React.FC<CommentsProps> = ({
             .then(() => {
                 setInputValue("");
                 toast.success('Success!');
+                setPostButtons(false);
                 router.refresh();
             })
             .catch((error) => {
@@ -87,6 +89,12 @@ const ListingComments: React.FC<CommentsProps> = ({
                 setIsLoading(false);
             })
     }
+
+    const loginModal = useLoginModal();
+
+    const onUserProfile = useCallback(() => {
+        if(!currentUser) return loginModal.onOpen();
+    }, [currentUser, loginModal]);
 
     return (
         <>
@@ -167,10 +175,16 @@ const ListingComments: React.FC<CommentsProps> = ({
                             return (
                                 <div key={comment.id} className="mt-8">
                                     <div className="flex items-center text-sm">
-                                        <Avatar src={user?.image} />
+                                        <div onClick={onUserProfile} className="cursor-pointer"><Avatar src={user?.image} /></div>
                                         <span className="font-semibold ml-2 mr-3">{user.name}</span>
                                         <span className="font-Light text-neutral-600">{format(dateVal, "MMM. d, yyyy")}</span>
-                                        <button className="font-semibold ml-2 mr-3" onClick={() => onDelete(comment.id)}>Delete</button>
+                                        
+                                        {currentUser?.id === user?.id && (
+                                            <>
+                                                <button className="font-semibold ml-2" onClick={() => alert("Edit is not available at the moment")}>Edit</button>
+                                                <button className="font-semibold ml-2" onClick={() => onDelete(comment.id)}>Delete</button>
+                                            </>
+                                        )}
                                     </div>
                                     <div className="font-light">
                                         {comment.description}
