@@ -14,6 +14,7 @@ import { format } from 'date-fns';
 import Button from "../Button";
 import { useRouter } from 'next/navigation';
 import useLoginModal from "@/app/hooks/useLoginModal";
+import TextArea from "../inputs/TextArea";
 
 interface CommentsProps {
     listing: SafeListing & {
@@ -68,7 +69,7 @@ const ListingComments: React.FC<CommentsProps> = ({
 
     const comment = document.querySelector("#description");
 
-    const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    const onSubmit: SubmitHandler<FieldValues> = () => {
         setIsLoading(true);
         axios.post("/api/comments", JSON.stringify({
             description: (comment as HTMLInputElement)?.value,
@@ -94,6 +95,7 @@ const ListingComments: React.FC<CommentsProps> = ({
 
     const onUserProfile = useCallback(() => {
         if(!currentUser) return loginModal.onOpen();
+        router.push("/profiles");
     }, [currentUser, loginModal]);
 
     return (
@@ -128,32 +130,13 @@ const ListingComments: React.FC<CommentsProps> = ({
 
                 {currentUser && (
                     <>
-                        <textarea
+                        <TextArea
                             id="description"
                             value={inputValue}
                             onChange={handleInputChange}
                             placeholder="Say something"
-                            maxLength={1000}
                             onFocus={() => setPostButtons(true)}
-                            className={`
-                                peer
-                                resize-none
-                                w-full
-                                p-4
-                                font-light 
-                                bg-white
-                                dark:bg-zinc-900
-                                border-2
-                                dark:border-zinc-400
-                                dark:text-zinc-400
-                                rounded-md
-                                outline-none
-                                transition
-                                disabled:opacity-70
-                                disabled:cursor-not-allowed
-                                focus:border-black
-                            `}>
-                        </textarea>
+                        />
                         {postButtons && (
                             <div className="flex flex-row items-center gap-4 w-full">
                                 <Button label="Cancel" outline small onClick={() => { setPostButtons(false); setInputValue(""); }} />
@@ -180,10 +163,7 @@ const ListingComments: React.FC<CommentsProps> = ({
                                         <span className="font-Light text-neutral-600">{format(dateVal, "MMM. d, yyyy")}</span>
                                         
                                         {currentUser?.id === user?.id && (
-                                            <>
-                                                <button className="font-semibold ml-2" onClick={() => alert("Edit is not available at the moment")}>Edit</button>
-                                                <button className="font-semibold ml-2" onClick={() => onDelete(comment.id)}>Delete</button>
-                                            </>
+                                            <button className="font-semibold ml-2" onClick={() => onDelete(comment.id)}>Delete</button>
                                         )}
                                     </div>
                                     <div className="font-light">
