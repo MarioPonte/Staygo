@@ -9,6 +9,8 @@ import getReservations from "@/app/actions/getReservations";
 import getComments from "@/app/actions/getCommentsTest";
 import { getUsers } from "@/app/actions/getUsers";
 
+import { Metadata } from "next";
+
 interface IParams {
     listingId?: string;
 }
@@ -42,3 +44,21 @@ const ListingPage = async ({ params }: { params: IParams }) => {
 }
 
 export default ListingPage;
+
+export async function generateMetadata({ params }: { params: IParams }): Promise<Metadata> {
+    const listing = await getListingById(params);
+
+    return {
+        title: listing?.title,
+        description: listing?.description,
+        openGraph: {
+            images: [
+                {
+                    url: listing?.imageSrc!,
+                    width: 1200,
+                    height: 630,
+                },
+            ],
+        },
+    }
+}
