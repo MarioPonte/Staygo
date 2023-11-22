@@ -48,7 +48,7 @@ const ProfilePage = async () => {
                     </div>
                     <div className="space-y-4">
                         <div className="text-4xl font-semibold">
-                            Hi, I'm Manuel Silva
+                            Hi, I&apos;m Manuel Silva
                         </div>
                         <div>
                             Joined in 2014
