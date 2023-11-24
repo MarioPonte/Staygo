@@ -8,6 +8,8 @@ import Heading from "../components/Heading";
 import getListings, { IListingsParams } from "../actions/getListings";
 import ListingCard from "../components/listings/ListingCard";
 
+export const dynamic = 'force-dynamic';
+
 interface ProfileProps {
     searchParams: IListingsParams
 };
