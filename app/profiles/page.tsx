@@ -8,11 +8,11 @@ import Heading from "../components/Heading";
 import getListings, { IListingsParams } from "../actions/getListings";
 import ListingCard from "../components/listings/ListingCard";
 
-interface HomeProps {
+interface ProfileProps {
     searchParams: IListingsParams
 };
 
-const ProfilePage = async ({ searchParams }: HomeProps) => {
+const ProfilePage = async ({ searchParams }: ProfileProps) => {
     const listings = await getListings(searchParams);
     const currentUser = await getCurrentUser();
 
