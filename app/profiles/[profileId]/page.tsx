@@ -1,22 +1,22 @@
 import EmptyState from "@/app/components/EmptyState";
 import ClientOnly from "@/app/components/ClientOnly";
 import getCurrentUser from "@/app/actions/getCurrentUser";
-import Container from "../components/Container";
+import Container from "../../components/Container";
 import Image from "next/image";
 import { AiFillStar, AiFillHeart, AiFillHome } from "react-icons/ai";
-import Heading from "../components/Heading";
-import getListings, { IListingsParams } from "../actions/getListings";
-import ListingCard from "../components/listings/ListingCard";
+import Heading from "../../components/Heading";
+import { getUsers } from "@/app/actions/getUsers";
 
 export const dynamic = 'force-dynamic';
 
-interface ProfileProps {
-    searchParams: IListingsParams
+interface IParams {
+    profileId?: string;
 };
 
-const ProfilePage = async ({ searchParams }: ProfileProps) => {
-    const listings = await getListings(searchParams);
+const ProfilePage = async ({ params }: { params: IParams }) => {
     const currentUser = await getCurrentUser();
+    const users = await getUsers();
+    const userProfile = users?.find(objeto => objeto.id === params.profileId);
 
     if (!currentUser) {
         return (
@@ -33,7 +33,7 @@ const ProfilePage = async ({ searchParams }: ProfileProps) => {
         <ClientOnly>
             <Container>
                 <div className="flex flex-row gap-10">
-                    <div className="border-[1px] border-neutral-200 p-10 rounded-xl">
+                    <div className="border-[1px] border-neutral-200 p-10 rounded-xl w-[500px]">
                         <div>
                             <Image
                                 className="rounded-full"
@@ -44,7 +44,7 @@ const ProfilePage = async ({ searchParams }: ProfileProps) => {
                             />
                         </div>
                         <hr className="mt-4 mb-4" />
-                        <div className=" space-y-4">
+                        <div className="space-y-4">
                             <div className="flex flex-row items-center content-center text-lg space-x-3">
                                 <AiFillStar size={20} color="#14b8a6" /><span>5 reviews</span>
                             </div>
@@ -56,12 +56,21 @@ const ProfilePage = async ({ searchParams }: ProfileProps) => {
                             </div>
                         </div>
                     </div>
-                    <div className="space-y-4">
-                        <div className="text-4xl font-semibold">
-                            Hi, I&apos;m Manuel Silva
+                    <div>
+                        <div className="space-y-4">
+                            <div className="text-4xl font-semibold">
+                                Hi, I&apos;m {userProfile?.name}
+                            </div>
+                            <div>
+                                Joined in 2014
+                            </div>
                         </div>
-                        <div>
-                            Joined in 2014
+                        <div className="mt-10">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque, dolorem quaerat a quas quos assumenda natus?
+                            Quia fugiat voluptatum nesciunt soluta ullam recusandae maxime.
+                            Tenetur explicabo quibusdam temporibus hic expedita vero rem aliquid. Autem similique
+                            saepe tempore, obcaecati commodi, quas quisquam harum at ea aspernatur
+                            reprehenderit deserunt enim provident porro asperiores. Eos, quos cum totam, earum eligendi maxime quisquam.
                         </div>
                     </div>
                 </div>
@@ -81,15 +90,7 @@ const ProfilePage = async ({ searchParams }: ProfileProps) => {
                         2xl:grid-cols-6
                         gap-8
                     ">
-                        {listings.map((listing) => {
-                            return (
-                                <ListingCard
-                                    currentUser={currentUser}
-                                    key={listing.id}
-                                    data={listing}
-                                />
-                            )
-                        })}
+                        Nothing yet
                     </div>
                 </div>
             </Container>

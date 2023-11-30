@@ -93,10 +93,12 @@ const ListingComments: React.FC<CommentsProps> = ({
 
     const loginModal = useLoginModal();
 
+    /*
     const onUserProfile = useCallback(() => {
         if(!currentUser) return loginModal.onOpen();
         router.push("/profiles");
     }, [currentUser, loginModal]);
+    */
 
     return (
         <>
@@ -158,7 +160,7 @@ const ListingComments: React.FC<CommentsProps> = ({
                             return (
                                 <div key={comment.id} className="mt-8">
                                     <div className="flex items-center text-sm">
-                                        <div onClick={onUserProfile} className="cursor-pointer"><Avatar src={user?.image} /></div>
+                                        <div onClick={() => router.push(`/profiles/${user.id}`)} className="cursor-pointer"><Avatar src={user?.image} /></div>
                                         <span className="font-semibold ml-2 mr-3">{user.name}</span>
                                         <span className="font-Light text-neutral-600">{format(dateVal, "MMM. d, yyyy")}</span>
                                         
