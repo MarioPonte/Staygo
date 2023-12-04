@@ -6,6 +6,7 @@ import Image from "next/image";
 import { AiFillStar, AiFillHeart, AiFillHome } from "react-icons/ai";
 import Heading from "../../components/Heading";
 import { getUsers } from "@/app/actions/getUsers";
+import { format, parseISO } from 'date-fns';
 
 export const dynamic = 'force-dynamic';
 
@@ -40,7 +41,7 @@ const ProfilePage = async ({ params }: { params: IParams }) => {
                                 height="200"
                                 width="200"
                                 alt="Avatar"
-                                src={"/images/placeholder.jpg"}
+                                src={userProfile?.image || "/images/placeholder.jpg"}
                             />
                         </div>
                         <hr className="mt-4 mb-4" />
@@ -49,7 +50,7 @@ const ProfilePage = async ({ params }: { params: IParams }) => {
                                 <AiFillStar size={20} color="#14b8a6" /><span>5 reviews</span>
                             </div>
                             <div className="flex flex-row items-center content-center text-lg space-x-3">
-                                <AiFillHeart size={20} color="#14b8a6" /><span>3 favorites</span>
+                                <AiFillHeart size={20} color="#14b8a6" /><span>{(userProfile?.favoriteIds)?.length} favorites</span>
                             </div>
                             <div className="flex flex-row items-center content-center text-lg space-x-3">
                                 <AiFillHome size={20} color="#14b8a6" /><span>6 properties</span>
@@ -62,7 +63,7 @@ const ProfilePage = async ({ params }: { params: IParams }) => {
                                 Hi, I&apos;m {userProfile?.name}
                             </div>
                             <div>
-                                Joined in 2014
+                                Joined in {format(parseISO((userProfile?.createdAt?.toISOString())!), 'MMMM dd yyyy')}
                             </div>
                         </div>
                         <div className="mt-10">
@@ -77,7 +78,7 @@ const ProfilePage = async ({ params }: { params: IParams }) => {
                 <div className="mt-10">
                     <Heading
                         title="Properties"
-                        subtitle="List of properties owned by Manuel Silva"
+                        subtitle={`List of properties owned by ${userProfile?.name}`}
                     />
                     <div className="
                         mt-10
