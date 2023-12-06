@@ -7,17 +7,28 @@ import { AiFillStar, AiFillHeart, AiFillHome } from "react-icons/ai";
 import Heading from "../../components/Heading";
 import { getUsers } from "@/app/actions/getUsers";
 import { format, parseISO } from 'date-fns';
+import getComments from "@/app/actions/getCommentsTest";
+import getListings, { IListingsParams } from "@/app/actions/getListings";
+import { SafeListing } from "@/app/types";
+import ListingCard from "@/app/components/listings/ListingCard";
 
 export const dynamic = 'force-dynamic';
 
 interface IParams {
+    listings: SafeListing[];
     profileId?: string;
 };
 
 const ProfilePage = async ({ params }: { params: IParams }) => {
     const currentUser = await getCurrentUser();
     const users = await getUsers();
-    const userProfile = users?.find(objeto => objeto.id === params.profileId);
+    const userProfile = users?.find(user => user.id === params.profileId);
+    const comments = await getComments();
+    const reviews = comments?.filter(comment => comment.userId === params.profileId);
+
+    const listings = await getListings({
+        userId: params.profileId
+    });
 
     if (!currentUser) {
         return (
@@ -47,13 +58,13 @@ const ProfilePage = async ({ params }: { params: IParams }) => {
                         <hr className="mt-4 mb-4" />
                         <div className="space-y-4">
                             <div className="flex flex-row items-center content-center text-lg space-x-3">
-                                <AiFillStar size={20} color="#14b8a6" /><span>5 reviews</span>
+                                <AiFillStar size={20} color="#14b8a6" /><span>{reviews?.length} reviews</span>
                             </div>
                             <div className="flex flex-row items-center content-center text-lg space-x-3">
                                 <AiFillHeart size={20} color="#14b8a6" /><span>{(userProfile?.favoriteIds)?.length} favorites</span>
                             </div>
                             <div className="flex flex-row items-center content-center text-lg space-x-3">
-                                <AiFillHome size={20} color="#14b8a6" /><span>6 properties</span>
+                                <AiFillHome size={20} color="#14b8a6" /><span>{listings.length} properties</span>
                             </div>
                         </div>
                     </div>
@@ -91,7 +102,14 @@ const ProfilePage = async ({ params }: { params: IParams }) => {
                         2xl:grid-cols-6
                         gap-8
                     ">
-                        Nothing yet
+                        {listings.map((listing: any) => (
+                            <ListingCard
+                                key={listing.id}
+                                data={listing}
+                                actionId={listing.id}
+                                currentUser={currentUser}
+                            />
+                        ))}
                     </div>
                 </div>
             </Container>
