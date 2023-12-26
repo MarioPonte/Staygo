@@ -6,7 +6,7 @@ import EmptyState from "@/app/components/EmptyState";
 
 import ListingClient from "./ListingClient";
 import getReservations from "@/app/actions/getReservations";
-import getComments from "@/app/actions/getCommentsTest";
+import getComments from "@/app/actions/getComments";
 import { getUsers } from "@/app/actions/getUsers";
 
 import { Metadata } from "next";

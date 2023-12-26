@@ -7,7 +7,7 @@ import { AiFillStar, AiFillHeart, AiFillHome } from "react-icons/ai";
 import Heading from "../../components/Heading";
 import { getUsers } from "@/app/actions/getUsers";
 import { format, parseISO } from 'date-fns';
-import getComments from "@/app/actions/getCommentsTest";
+import getComments from "@/app/actions/getComments";
 import getListings, { IListingsParams } from "@/app/actions/getListings";
 import { SafeListing } from "@/app/types";
 import ListingCard from "@/app/components/listings/ListingCard";

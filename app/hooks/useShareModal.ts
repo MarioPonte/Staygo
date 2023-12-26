@@ -12,5 +12,4 @@ const useShareModal = create<ShareModalStore>((set) => ({
   onClose: () => set({ isOpen: false })
 }));
 
-
 export default useShareModal;
