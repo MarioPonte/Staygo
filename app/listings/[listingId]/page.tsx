@@ -25,7 +25,7 @@ const ListingPage = async ({ params }: { params: IParams }) => {
     if (!listing) {
         return (
             <ClientOnly>
-                <EmptyState />
+                <EmptyState title="Listing not found" subtitle="The listing you are looking for does not exist or has been removed." />
             </ClientOnly>
         )
     }
