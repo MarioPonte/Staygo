@@ -52,7 +52,7 @@ const Button: React.FC<ButtonProps> = ({
                         `}
                     />
                 )}
-                {disabled ? "Loading" : label}
+                {label}
         </button>
     )
 }

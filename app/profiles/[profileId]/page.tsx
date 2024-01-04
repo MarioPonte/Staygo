@@ -44,8 +44,8 @@ const ProfilePage = async ({ params }: { params: IParams }) => {
     return (
         <ClientOnly>
             <Container>
-                <div className="flex flex-row gap-10">
-                    <div className="border-[1px] border-neutral-200 p-10 rounded-xl w-[500px]">
+                <div className="flex flex-wrap md:flex-nowrap gap-10">
+                    <div className="border-[1px] border-neutral-200 p-10 rounded-xl">
                         <div>
                             <Image
                                 className="rounded-full"
