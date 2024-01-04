@@ -78,11 +78,7 @@ const ProfilePage = async ({ params }: { params: IParams }) => {
                             </div>
                         </div>
                         <div className="mt-10">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque, dolorem quaerat a quas quos assumenda natus?
-                            Quia fugiat voluptatum nesciunt soluta ullam recusandae maxime.
-                            Tenetur explicabo quibusdam temporibus hic expedita vero rem aliquid. Autem similique
-                            saepe tempore, obcaecati commodi, quas quisquam harum at ea aspernatur
-                            reprehenderit deserunt enim provident porro asperiores. Eos, quos cum totam, earum eligendi maxime quisquam.
+                            {userProfile?.description}
                         </div>
                     </div>
                 </div>
