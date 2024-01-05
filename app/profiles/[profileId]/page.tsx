@@ -8,7 +8,7 @@ import Heading from "../../components/Heading";
 import { getUsers } from "@/app/actions/getUsers";
 import { format, parseISO } from 'date-fns';
 import getComments from "@/app/actions/getComments";
-import getListings, { IListingsParams } from "@/app/actions/getListings";
+import getListings from "@/app/actions/getListings";
 import { SafeListing } from "@/app/types";
 import ListingCard from "@/app/components/listings/ListingCard";
 
@@ -45,8 +45,8 @@ const ProfilePage = async ({ params }: { params: IParams }) => {
         <ClientOnly>
             <Container>
                 <div className="flex flex-wrap md:flex-nowrap gap-10">
-                    <div className="border-[1px] border-neutral-200 p-10 rounded-xl">
-                        <div>
+                    <div className="w-full sm:w-full md:w-fit border-[1px] border-neutral-200 p-10 rounded-xl">
+                        <div className="flex m-auto content-center justify-center">
                             <Image
                                 className="rounded-full"
                                 height="200"
@@ -68,7 +68,7 @@ const ProfilePage = async ({ params }: { params: IParams }) => {
                             </div>
                         </div>
                     </div>
-                    <div>
+                    <div className="w-full md:w-4/5">
                         <div className="space-y-4">
                             <div className="text-4xl font-semibold">
                                 Hi, I&apos;m {userProfile?.name}
